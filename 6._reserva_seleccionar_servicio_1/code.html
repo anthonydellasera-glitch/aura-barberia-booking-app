@@ -1,0 +1,305 @@
+<!DOCTYPE html><html lang="es"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport">
+<meta content="mobile_stack" name="shell-type">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "surface-container-low": "#f4f4f1",
+            "on-primary-fixed": "#002115",
+            "surface-dim": "#dadad7",
+            "primary-fixed": "#b2f0d3",
+            "inverse-surface": "#2f312f",
+            "on-background": "#1a1c1b",
+            "on-secondary": "#ffffff",
+            "outline": "#707973",
+            "background": "#F7F7F4",
+            "tertiary-fixed": "#dae5e0",
+            "error": "#ba1a1a",
+            "outline-variant": "#bfc9c2",
+            "on-primary": "#ffffff",
+            "surface-container-high": "#e8e8e5",
+            "primary": "#004430",
+            "surface-container": "#eeeeeb",
+            "secondary": "#5f5e5e",
+            "primary-container": "#1F5C46",
+            "surface-container-lowest": "#ffffff",
+            "surface": "#F7F7F4",
+            "on-primary-container": "#95d2b6",
+            "surface-variant": "#e2e3e0",
+            "on-surface": "#1a1c1b",
+            "on-surface-variant": "#404944"
+          },
+          fontFamily: {
+            manrope: ["Manrope", "sans-serif"]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    @layer base {
+      html, body {
+        width: 100vw;
+        margin: 0;
+        padding: 0;
+        background-color: #F7F7F4;
+      }
+      body {
+        overscroll-behavior: none;
+        font-family: 'Manrope', sans-serif;
+      }
+      .pb-safe {
+        padding-bottom: env(safe-area-inset-bottom, 16px);
+      }
+      .pt-safe {
+        padding-top: env(safe-area-inset-top, 0px);
+      }
+    }
+    ::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+<body class="bg-[#F7F7F4] text-on-surface flex flex-col min-h-screen selection:bg-primary-fixed selection:text-on-primary-fixed antialiased">
+<!-- Top App Bar -->
+<header class="fixed top-0 inset-x-0 z-50 bg-[#F7F7F4]/95 backdrop-blur-md pt-safe border-b border-black/[0.04]">
+<div class="h-16 px-4 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<button aria-label="Volver" class="w-10 h-10 -ml-1.5 flex items-center justify-center rounded-full text-on-surface hover:bg-black/5 active:scale-95 transition-all" onclick="history.back()">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+<div>
+<h1 class="font-bold text-[17px] leading-tight text-on-surface tracking-tight">Seleccionar Servicio</h1>
+<p class="text-[12px] font-semibold text-[#1F5C46] tracking-wide mt-0.5">Paso 1 de 4</p>
+</div>
+</div>
+<div class="flex items-center gap-1.5 bg-black/[0.04] px-2.5 py-1 rounded-full border border-black/[0.04]">
+<span class="w-2 h-2 rounded-full bg-[#1F5C46] animate-pulse"></span>
+<span class="text-[11px] font-semibold uppercase tracking-wider text-secondary">Aura</span>
+</div>
+</div>
+<!-- Category Filter Chips -->
+<div class="px-4 pb-3 overflow-x-auto no-scrollbar flex items-center gap-2">
+<button class="filter-chip whitespace-nowrap px-4 py-1.5 rounded-full text-[13px] font-bold tracking-tight bg-[#1F5C46] text-white shadow-sm transition-all" onclick="setFilter(this, 'all')">
+        Todos
+      </button>
+<button class="filter-chip whitespace-nowrap px-4 py-1.5 rounded-full text-[13px] font-medium text-secondary bg-white border border-black/5 hover:border-black/10 active:scale-95 transition-all" onclick="setFilter(this, 'cortes')">
+        Cortes
+      </button>
+<button class="filter-chip whitespace-nowrap px-4 py-1.5 rounded-full text-[13px] font-medium text-secondary bg-white border border-black/5 hover:border-black/10 active:scale-95 transition-all" onclick="setFilter(this, 'barba')">
+        Barba &amp; Afeitado
+      </button>
+<button class="filter-chip whitespace-nowrap px-4 py-1.5 rounded-full text-[13px] font-medium text-secondary bg-white border border-black/5 hover:border-black/10 active:scale-95 transition-all" onclick="setFilter(this, 'tratamientos')">
+        Tratamientos
+      </button>
+<button class="filter-chip whitespace-nowrap px-4 py-1.5 rounded-full text-[13px] font-medium text-secondary bg-white border border-black/5 hover:border-black/10 active:scale-95 transition-all" onclick="setFilter(this, 'combos')">
+        Combos
+      </button>
+</div>
+</header>
+<!-- Main Content: Services List -->
+<main class="flex-1 w-full px-4 pt-[124px] pb-36">
+<div class="flex flex-col gap-3.5 max-w-lg mx-auto" id="services-list">
+<!-- Card 1 (Selected) -->
+<article class="service-card group cursor-pointer bg-white rounded-[16px] p-4 shadow-[0_2px_12px_rgba(0,0,0,0.04)] ring-2 ring-[#1F5C46] transition-all duration-200 relative overflow-hidden flex items-start gap-3.5" data-category="cortes" onclick="selectService(this, 18, 'Corte Clásico Fade')">
+<div class="w-12 h-12 rounded-xl bg-[#1F5C46]/10 flex items-center justify-center shrink-0 text-[#1F5C46] mt-0.5">
+<span class="material-symbols-outlined text-[26px]">content_cut</span>
+</div>
+<div class="flex flex-col flex-1 min-w-0 pr-1">
+<div class="flex items-start justify-between gap-2">
+<h3 class="font-bold text-[16px] text-on-surface tracking-tight leading-snug">Corte Clásico Fade</h3>
+<span class="font-extrabold text-[16px] text-[#1F5C46] shrink-0">$18 USD</span>
+</div>
+<p class="text-[13px] text-secondary leading-relaxed mt-1">Degradado limpio a máquina y tijera con lavado refrescante</p>
+<div class="flex items-center gap-1.5 text-secondary mt-2.5">
+<span class="material-symbols-outlined text-[15px] text-[#1F5C46]">schedule</span>
+<span class="text-[12px] font-medium text-on-surface-variant">40 min</span>
+</div>
+</div>
+<div class="shrink-0 pt-0.5">
+<div class="radio-indicator w-6 h-6 rounded-full bg-[#1F5C46] border-2 border-[#1F5C46] flex items-center justify-center transition-colors shadow-sm">
+<span class="material-symbols-outlined text-white text-[15px] font-bold">check</span>
+</div>
+</div>
+</article>
+<!-- Card 2 -->
+<article class="service-card group cursor-pointer bg-white rounded-[16px] p-4 shadow-[0_2px_12px_rgba(0,0,0,0.04)] ring-1 ring-black/[0.04] hover:shadow-[0_4px_16px_rgba(0,0,0,0.06)] transition-all duration-200 relative overflow-hidden flex items-start gap-3.5" data-category="barba" onclick="selectService(this, 14, 'Afeitado Ritual con Toalla Caliente')">
+<div class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center shrink-0 text-on-surface-variant mt-0.5">
+<span class="material-symbols-outlined text-[26px]">face</span>
+</div>
+<div class="flex flex-col flex-1 min-w-0 pr-1">
+<div class="flex items-start justify-between gap-2">
+<h3 class="font-bold text-[16px] text-on-surface tracking-tight leading-snug">Afeitado Ritual con Toalla Caliente</h3>
+<span class="font-bold text-[16px] text-on-surface shrink-0">$14 USD</span>
+</div>
+<p class="text-[13px] text-secondary leading-relaxed mt-1">Vaporizador, espuma tibia, navaja tradicional y bálsamo hidratante</p>
+<div class="flex items-center gap-1.5 text-secondary mt-2.5">
+<span class="material-symbols-outlined text-[15px] text-secondary">schedule</span>
+<span class="text-[12px] font-medium text-on-surface-variant">30 min</span>
+</div>
+</div>
+<div class="shrink-0 pt-0.5">
+<div class="radio-indicator w-6 h-6 rounded-full border-2 border-outline-variant flex items-center justify-center bg-transparent transition-colors">
+<span class="material-symbols-outlined text-transparent text-[15px] font-bold">check</span>
+</div>
+</div>
+</article>
+<!-- Card 3 -->
+<article class="service-card group cursor-pointer bg-white rounded-[16px] p-4 shadow-[0_2px_12px_rgba(0,0,0,0.04)] ring-1 ring-black/[0.04] hover:shadow-[0_4px_16px_rgba(0,0,0,0.06)] transition-all duration-200 relative overflow-hidden flex items-start gap-3.5" data-category="barba" onclick="selectService(this, 10, 'Perfilado de Barba Express')">
+<div class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center shrink-0 text-on-surface-variant mt-0.5">
+<span class="material-symbols-outlined text-[26px]">brush</span>
+</div>
+<div class="flex flex-col flex-1 min-w-0 pr-1">
+<div class="flex items-start justify-between gap-2">
+<h3 class="font-bold text-[16px] text-on-surface tracking-tight leading-snug">Perfilado de Barba Express</h3>
+<span class="font-bold text-[16px] text-on-surface shrink-0">$10 USD</span>
+</div>
+<p class="text-[13px] text-secondary leading-relaxed mt-1">Alineación de contornos y rebaje con trimmer y aceite esencial</p>
+<div class="flex items-center gap-1.5 text-secondary mt-2.5">
+<span class="material-symbols-outlined text-[15px] text-secondary">schedule</span>
+<span class="text-[12px] font-medium text-on-surface-variant">20 min</span>
+</div>
+</div>
+<div class="shrink-0 pt-0.5">
+<div class="radio-indicator w-6 h-6 rounded-full border-2 border-outline-variant flex items-center justify-center bg-transparent transition-colors">
+<span class="material-symbols-outlined text-transparent text-[15px] font-bold">check</span>
+</div>
+</div>
+</article>
+<!-- Card 4 (Aura Signature Pack with Recommended Badge) -->
+<article class="service-card group cursor-pointer bg-white rounded-[16px] p-4 shadow-[0_2px_12px_rgba(0,0,0,0.04)] ring-1 ring-black/[0.04] hover:shadow-[0_4px_16px_rgba(0,0,0,0.06)] transition-all duration-200 relative overflow-hidden flex items-start gap-3.5" data-category="combos" onclick="selectService(this, 30, 'Aura Signature Pack')">
+<div class="w-12 h-12 rounded-xl bg-[#1F5C46]/10 flex items-center justify-center shrink-0 text-[#1F5C46] mt-0.5">
+<span class="material-symbols-outlined text-[26px]">star</span>
+</div>
+<div class="flex flex-col flex-1 min-w-0 pr-1">
+<div class="flex items-center gap-2 mb-1">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-extrabold uppercase tracking-wide bg-[#b2f0d3] text-[#004430]">
+<span class="material-symbols-outlined text-[11px]">verified</span>
+              Recomendado
+            </span>
+</div>
+<div class="flex items-start justify-between gap-2">
+<h3 class="font-bold text-[16px] text-on-surface tracking-tight leading-snug">Aura Signature Pack</h3>
+<span class="font-bold text-[16px] text-on-surface shrink-0">$30 USD</span>
+</div>
+<p class="text-[13px] text-secondary leading-relaxed mt-1">Corte de autor + ritual completo de barba + mascarilla exfoliante</p>
+<div class="flex items-center gap-1.5 text-secondary mt-2.5">
+<span class="material-symbols-outlined text-[15px] text-secondary">schedule</span>
+<span class="text-[12px] font-medium text-on-surface-variant">65 min</span>
+</div>
+</div>
+<div class="shrink-0 pt-0.5">
+<div class="radio-indicator w-6 h-6 rounded-full border-2 border-outline-variant flex items-center justify-center bg-transparent transition-colors">
+<span class="material-symbols-outlined text-transparent text-[15px] font-bold">check</span>
+</div>
+</div>
+</article>
+<!-- Card 5 -->
+<article class="service-card group cursor-pointer bg-white rounded-[16px] p-4 shadow-[0_2px_12px_rgba(0,0,0,0.04)] ring-1 ring-black/[0.04] hover:shadow-[0_4px_16px_rgba(0,0,0,0.06)] transition-all duration-200 relative overflow-hidden flex items-start gap-3.5" data-category="tratamientos" onclick="selectService(this, 22, 'Camuflaje de Canas / Color')">
+<div class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center shrink-0 text-on-surface-variant mt-0.5">
+<span class="material-symbols-outlined text-[26px]">palette</span>
+</div>
+<div class="flex flex-col flex-1 min-w-0 pr-1">
+<div class="flex items-start justify-between gap-2">
+<h3 class="font-bold text-[16px] text-on-surface tracking-tight leading-snug">Camuflaje de Canas / Color</h3>
+<span class="font-bold text-[16px] text-on-surface shrink-0">$22 USD</span>
+</div>
+<p class="text-[13px] text-secondary leading-relaxed mt-1">Tinte sutil para barba o cabello de aspecto 100% natural</p>
+<div class="flex items-center gap-1.5 text-secondary mt-2.5">
+<span class="material-symbols-outlined text-[15px] text-secondary">schedule</span>
+<span class="text-[12px] font-medium text-on-surface-variant">35 min</span>
+</div>
+</div>
+<div class="shrink-0 pt-0.5">
+<div class="radio-indicator w-6 h-6 rounded-full border-2 border-outline-variant flex items-center justify-center bg-transparent transition-colors">
+<span class="material-symbols-outlined text-transparent text-[15px] font-bold">check</span>
+</div>
+</div>
+</article>
+</div>
+</main>
+<!-- Sticky Bottom Summary and CTA -->
+<div class="fixed bottom-0 inset-x-0 z-40 bg-white/95 backdrop-blur-xl border-t border-black/[0.06] shadow-[0_-6px_24px_rgba(0,0,0,0.05)] px-4 pt-3 pb-safe">
+<div class="max-w-md mx-auto flex flex-col gap-2.5">
+<div class="flex items-center justify-between px-1">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-[#1F5C46]"></span>
+<span class="text-[13px] font-semibold text-secondary" id="summary-label">1 servicio seleccionado:</span>
+</div>
+<span class="text-[17px] font-extrabold text-[#1F5C46] tracking-tight" id="summary-price">$18 USD</span>
+</div>
+<button class="w-full h-[52px] bg-[#1F5C46] hover:bg-[#184937] active:scale-[0.98] transition-all text-white font-bold text-[15px] rounded-2xl flex items-center justify-center gap-2 shadow-[0_4px_14px_rgba(31,92,70,0.28)]" type="button">
+<span>Continuar con Fecha y Hora</span>
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Interactive script for Selection & Filter -->
+<script>
+    function selectService(cardElement, price, name) {
+      const allCards = document.querySelectorAll('.service-card');
+
+      allCards.forEach(card => {
+        card.classList.remove('ring-2', 'ring-[#1F5C46]', 'shadow-md');
+        card.classList.add('ring-1', 'ring-black/[0.04]');
+
+        const radio = card.querySelector('.radio-indicator');
+        const icon = radio.querySelector('.material-symbols-outlined');
+        const priceTag = card.querySelector('span.shrink-0');
+
+        radio.classList.remove('bg-[#1F5C46]', 'border-[#1F5C46]');
+        radio.classList.add('border-outline-variant', 'bg-transparent');
+        icon.classList.remove('text-white');
+        icon.classList.add('text-transparent');
+
+        priceTag.classList.remove('text-[#1F5C46]', 'font-extrabold');
+        priceTag.classList.add('text-on-surface', 'font-bold');
+      });
+
+      cardElement.classList.remove('ring-1', 'ring-black/[0.04]');
+      cardElement.classList.add('ring-2', 'ring-[#1F5C46]', 'shadow-md');
+
+      const selectedRadio = cardElement.querySelector('.radio-indicator');
+      const selectedIcon = selectedRadio.querySelector('.material-symbols-outlined');
+      const selectedPrice = cardElement.querySelector('span.shrink-0');
+
+      selectedRadio.classList.remove('border-outline-variant', 'bg-transparent');
+      selectedRadio.classList.add('bg-[#1F5C46]', 'border-[#1F5C46]');
+      selectedIcon.classList.remove('text-transparent');
+      selectedIcon.classList.add('text-white');
+
+      selectedPrice.classList.remove('text-on-surface', 'font-bold');
+      selectedPrice.classList.add('text-[#1F5C46]', 'font-extrabold');
+
+      document.getElementById('summary-price').textContent = `$${price} USD`;
+    }
+
+    function setFilter(btn, category) {
+      document.querySelectorAll('.filter-chip').forEach(chip => {
+        chip.className = 'filter-chip whitespace-nowrap px-4 py-1.5 rounded-full text-[13px] font-medium text-secondary bg-white border border-black/5 hover:border-black/10 active:scale-95 transition-all';
+      });
+
+      btn.className = 'filter-chip whitespace-nowrap px-4 py-1.5 rounded-full text-[13px] font-bold tracking-tight bg-[#1F5C46] text-white shadow-sm transition-all';
+
+      const cards = document.querySelectorAll('.service-card');
+      cards.forEach(card => {
+        if (category === 'all' || card.getAttribute('data-category') === category) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body></html>

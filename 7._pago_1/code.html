@@ -1,0 +1,350 @@
+<!DOCTYPE html><html lang="es"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport">
+<meta content="mobile_stack" name="shell-type">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "surface": "#F7F7F4",
+            "background": "#F7F7F4",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-low": "#f4f4f1",
+            "surface-container": "#eeeeeb",
+            "surface-container-high": "#e8e8e5",
+            "surface-container-highest": "#e2e3e0",
+            "primary": "#004430",
+            "primary-container": "#1F5C46",
+            "on-primary": "#ffffff",
+            "primary-fixed": "#b2f0d3",
+            "on-primary-fixed": "#002115",
+            "on-surface": "#1a1c1b",
+            "on-surface-variant": "#5f6661",
+            "outline": "#707973",
+            "outline-variant": "#bfc9c2"
+          },
+          fontFamily: {
+            sans: ["Manrope", "sans-serif"]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    @layer base {
+      html, body {
+        width: 100vw;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        overscroll-behavior: none;
+      }
+      .pb-safe {
+        padding-bottom: env(safe-area-inset-bottom, 0px);
+      }
+      .pt-safe {
+        padding-top: env(safe-area-inset-top, 0px);
+      }
+    }
+    ::-webkit-scrollbar {
+      display: none;
+    }
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-[#F7F7F4] font-sans text-on-surface flex flex-col min-h-screen selection:bg-primary-fixed selection:text-on-primary-fixed antialiased">
+<!-- Top App Bar -->
+<header class="fixed top-0 inset-x-0 z-50 bg-[#F7F7F4]/90 backdrop-blur-md pt-safe border-b border-surface-container-high/60">
+<div class="h-14 px-4 flex items-center justify-between">
+<button aria-label="Volver" class="w-10 h-10 -ml-2 flex items-center justify-center rounded-full text-on-surface hover:bg-surface-container active:scale-95 transition-all" onclick="history.back()">
+<span class="material-symbols-outlined text-[22px]">arrow_back</span>
+</button>
+<div class="flex flex-col items-center">
+<h1 class="text-[17px] font-bold text-on-surface tracking-tight">Confirmar y Pagar</h1>
+<span class="text-[11px] font-semibold tracking-wider uppercase text-primary-container">Paso 4 de 4</span>
+</div>
+<div class="w-10 h-10 flex items-center justify-end">
+<div class="w-8 h-8 rounded-full bg-primary-container/10 flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-[18px]">verified_user</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex flex-col flex-1 px-4 pt-20 pb-36">
+<!-- Stepper indicator line -->
+<div class="grid grid-cols-4 gap-1.5 mb-4 px-0.5">
+<div class="h-1 rounded-full bg-primary-container"></div>
+<div class="h-1 rounded-full bg-primary-container"></div>
+<div class="h-1 rounded-full bg-primary-container"></div>
+<div class="h-1 rounded-full bg-primary-container"></div>
+</div>
+<!-- Summary Card -->
+<section class="bg-white rounded-[20px] p-4 shadow-[0_2px_12px_rgba(0,0,0,0.03)] border border-surface-container-high/60 mb-4">
+<div class="flex items-center justify-between pb-3.5 border-b border-surface-container">
+<!-- Barber Info with round avatar -->
+<div class="flex items-center gap-3">
+<img alt="Carlos 'El Maestro' Ruiz" class="w-12 h-12 rounded-full object-cover ring-2 ring-primary-container/20" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCltWxT4Plv3g2f0uIMQwZvbUPdL5kBo4rOyeFWKouV_byQEA8BoxA9ySJFb0kaRrmQhGbUI_KURMbWngOdXTY_O0_6qHcJisZ-K5oTZ4hXUWMUkT_YgOaGLibLbS0uHE7pkYEgN_bkeHOr7PqEfHWmW1aa801EcMogQfImrKJXlTuJt8tkSlzWGJZRVTPktfBlFkHv_mo7_4r6ZHZ1ju_OFqZNnw77GapLxsD47WGrbTq4CwfjAw5n">
+<div class="flex flex-col">
+<span class="text-[15px] font-bold text-on-surface leading-tight">Carlos "El Maestro" Ruiz</span>
+<div class="flex items-center gap-1.5 mt-0.5">
+<span class="material-symbols-outlined text-amber-500 text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-[12px] font-bold text-on-surface">4.9</span>
+<span class="text-[11px] text-on-surface-variant font-medium">(180+ reseñas)</span>
+</div>
+</div>
+</div>
+<span class="text-[11px] font-semibold text-primary-container bg-primary-container/10 px-2.5 py-1 rounded-full">
+          Barbero Pro
+        </span>
+</div>
+<!-- Service Details -->
+<div class="mt-3.5 space-y-2.5">
+<div class="flex items-start gap-2.5">
+<div class="w-8 h-8 rounded-lg bg-surface-container-low flex items-center justify-center shrink-0 text-primary-container">
+<span class="material-symbols-outlined text-[18px]">content_cut</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="text-[14px] font-bold text-on-surface">Corte Clásico Fade &amp; Toalla Caliente</span>
+<span class="text-[12px] text-on-surface-variant">Incluye lavado capilar, visagismo y styling artesanal</span>
+</div>
+</div>
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-lg bg-surface-container-low flex items-center justify-center shrink-0 text-primary-container">
+<span class="material-symbols-outlined text-[18px]">calendar_today</span>
+</div>
+<div class="flex items-center justify-between w-full min-w-0">
+<span class="text-[13px] text-on-surface-variant">Fecha y horario</span>
+<span class="text-[13px] font-bold text-on-surface">Jueves, 24 de Octubre · 10:30 AM</span>
+</div>
+</div>
+<div class="flex items-start gap-2.5">
+<div class="w-8 h-8 rounded-lg bg-surface-container-low flex items-center justify-center shrink-0 text-primary-container">
+<span class="material-symbols-outlined text-[18px]">pin_drop</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="text-[13px] font-semibold text-on-surface">Sede Central</span>
+<span class="text-[12px] text-on-surface-variant">Calle Serrano 42, Cabina 3</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Cost Breakdown Card -->
+<section class="bg-white rounded-[20px] p-4 shadow-[0_2px_12px_rgba(0,0,0,0.03)] border border-surface-container-high/60 mb-4">
+<h2 class="text-[14px] font-bold text-on-surface mb-3 flex items-center justify-between">
+<span>Desglose del pago</span>
+<span class="text-[11px] font-medium text-on-surface-variant uppercase tracking-wider">USD</span>
+</h2>
+<div class="space-y-2 text-[13px]">
+<div class="flex items-center justify-between">
+<span class="text-on-surface-variant">Subtotal</span>
+<span class="font-semibold text-on-surface">$18.00 USD</span>
+</div>
+<div class="flex items-center justify-between text-primary-container">
+<span class="flex items-center gap-1 font-medium">
+<span class="material-symbols-outlined text-[15px]">discount</span>
+            Descuento Bienvenida (20%)
+          </span>
+<span class="font-bold">-$3.60 USD</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-on-surface-variant">Tarifa de servicio</span>
+<span class="font-semibold text-on-surface">$0.60 USD</span>
+</div>
+<div class="pt-2.5 mt-2.5 border-t border-surface-container flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-[15px] font-bold text-on-surface">Total a pagar</span>
+<span class="text-[11px] text-on-surface-variant">Impuestos incluidos</span>
+</div>
+<span class="text-[22px] font-extrabold text-[#1F5C46] tracking-tight">
+            $15.00 <span class="text-[13px] font-bold text-[#1F5C46]/80">USD</span>
+</span>
+</div>
+</div>
+</section>
+<!-- Promo Code Input Box -->
+<div class="bg-white rounded-[16px] p-2.5 pl-3.5 border border-surface-container-high/70 shadow-sm flex items-center justify-between mb-4">
+<div class="flex items-center gap-2 min-w-0">
+<span class="material-symbols-outlined text-primary-container text-[20px]">confirmation_number</span>
+<div class="flex flex-col min-w-0">
+<span class="text-[11px] font-medium text-on-surface-variant">Código de descuento</span>
+<div class="flex items-center gap-1.5">
+<span class="inline-flex items-center gap-1 bg-[#1F5C46]/10 text-[#1F5C46] font-bold text-[12px] px-2 py-0.5 rounded-md tracking-wider">
+              AURA20
+              <span class="material-symbols-outlined text-[13px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</span>
+<span class="text-[11px] font-semibold text-[#1F5C46]">Aplicado</span>
+</div>
+</div>
+</div>
+<button class="text-[12px] font-bold text-on-surface-variant hover:text-on-surface px-2.5 py-1.5 rounded-lg active:bg-surface-container transition-colors" type="button">
+        Cambiar
+      </button>
+</div>
+<!-- Payment Methods Section -->
+<section class="space-y-2.5 mb-2">
+<div class="flex items-center justify-between px-1 mb-1">
+<h2 class="text-[15px] font-bold text-on-surface">Método de pago</h2>
+<span class="text-[12px] text-on-surface-variant font-medium">Selecciona una opción</span>
+</div>
+<!-- Option 1: Credit Card (Selected by Default) -->
+<label class="payment-card relative flex items-center justify-between p-3.5 rounded-[16px] bg-white border-2 border-[#1F5C46] shadow-sm cursor-pointer transition-all active:scale-[0.99]" data-payment-id="card">
+<input checked="" class="sr-only payment-radio" name="payment_method" type="radio" value="card">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-11 h-8 rounded-lg bg-slate-900 flex items-center justify-center shrink-0 shadow-inner">
+<span class="text-[12px] font-black italic tracking-widest text-white">VISA</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2">
+<span class="text-[14px] font-bold text-on-surface truncate">Tarjeta de Crédito</span>
+<span class="bg-[#1F5C46]/10 text-[#1F5C46] text-[10px] font-bold px-1.5 py-0.5 rounded">Predeterminada</span>
+</div>
+<span class="text-[12px] text-on-surface-variant">Visa terminada en 4242</span>
+</div>
+</div>
+<div class="w-5 h-5 rounded-full flex items-center justify-center shrink-0 bg-[#1F5C46] text-white">
+<span class="w-2 h-2 rounded-full bg-white"></span>
+</div>
+</label>
+<!-- Option 2: Apple Pay -->
+<label class="payment-card relative flex items-center justify-between p-3.5 rounded-[16px] bg-white border border-surface-container-high/70 shadow-sm cursor-pointer transition-all active:scale-[0.99]" data-payment-id="apple_pay">
+<input class="sr-only payment-radio" name="payment_method" type="radio" value="apple_pay">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-11 h-8 rounded-lg bg-surface-container flex items-center justify-center shrink-0">
+<svg class="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 24 24">
+<path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.84c.64-.78 1.08-1.87.96-2.84-.93.04-2.07.62-2.73 1.4-.58.67-1.09 1.76-.95 2.8 1.04.08 2.08-.58 2.72-1.36z"></path>
+</svg>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="text-[14px] font-bold text-on-surface">Apple Pay</span>
+<span class="text-[12px] text-on-surface-variant">Confirmación biométrica rápida</span>
+</div>
+</div>
+<div class="w-5 h-5 rounded-full flex items-center justify-center shrink-0 border-2 border-outline-variant bg-transparent">
+<span class="w-2 h-2 rounded-full bg-transparent"></span>
+</div>
+</label>
+<!-- Option 3: Google Pay -->
+<label class="payment-card relative flex items-center justify-between p-3.5 rounded-[16px] bg-white border border-surface-container-high/70 shadow-sm cursor-pointer transition-all active:scale-[0.99]" data-payment-id="google_pay">
+<input class="sr-only payment-radio" name="payment_method" type="radio" value="google_pay">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-11 h-8 rounded-lg bg-surface-container flex items-center justify-center shrink-0">
+<svg class="w-5 h-5" viewBox="0 0 24 24">
+<path d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.66-5.17 3.66-9.17z" fill="#4285F4"></path>
+<path d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.33 24 12 24z" fill="#34A853"></path>
+<path d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.14-1.55.38-2.27V6.58H1.25C.45 8.16 0 9.94 0 12s.45 3.84 1.25 5.42l4.03-3.15z" fill="#FBBC05"></path>
+<path d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.33 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z" fill="#EA4335"></path>
+</svg>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="text-[14px] font-bold text-on-surface">Google Pay</span>
+<span class="text-[12px] text-on-surface-variant">Pago en un toque</span>
+</div>
+</div>
+<div class="w-5 h-5 rounded-full flex items-center justify-center shrink-0 border-2 border-outline-variant bg-transparent">
+<span class="w-2 h-2 rounded-full bg-transparent"></span>
+</div>
+</label>
+<!-- Option 4: Pago en Local -->
+<label class="payment-card relative flex items-center justify-between p-3.5 rounded-[16px] bg-white border border-surface-container-high/70 shadow-sm cursor-pointer transition-all active:scale-[0.99]" data-payment-id="cash">
+<input class="sr-only payment-radio" name="payment_method" type="radio" value="cash">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-11 h-8 rounded-lg bg-surface-container flex items-center justify-center shrink-0 text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">payments</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="text-[14px] font-bold text-on-surface">Pago en Local</span>
+<span class="text-[12px] text-on-surface-variant truncate">Efectivo o Datáfono al finalizar el servicio</span>
+</div>
+</div>
+<div class="w-5 h-5 rounded-full flex items-center justify-center shrink-0 border-2 border-outline-variant bg-transparent">
+<span class="w-2 h-2 rounded-full bg-transparent"></span>
+</div>
+</label>
+</section>
+</main>
+<!-- Sticky Bottom CTA Section -->
+<div class="fixed bottom-0 inset-x-0 z-40 bg-[#F7F7F4]/95 backdrop-blur-md border-t border-surface-container-high/60 pt-3 pb-safe px-4 shadow-[0_-8px_20px_rgba(0,0,0,0.04)]">
+<div class="flex flex-col gap-2 max-w-md mx-auto">
+<!-- Button: Full width, 52px height, forest green #1F5C46 -->
+<button class="w-full h-[52px] rounded-2xl bg-[#1F5C46] text-white font-bold text-[16px] flex items-center justify-center gap-2 shadow-[0_4px_14px_rgba(31,92,70,0.35)] active:scale-[0.98] transition-all" id="payBtn" onclick="handlePayment()" type="button">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">lock</span>
+<span id="btnLabel">Pagar ahora · $15.00 USD</span>
+</button>
+<!-- Security Lock Badge -->
+<div class="flex items-center justify-center gap-1.5 pb-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px] text-[#1F5C46]" style="font-variation-settings: 'FILL' 1;">shield</span>
+<span class="text-[11px] font-semibold">Pago 100% encriptado</span>
+<span class="text-[11px] text-on-surface-variant/50">·</span>
+<span class="text-[11px] text-on-surface-variant font-medium">Cancelación gratis hasta 2h antes</span>
+</div>
+</div>
+</div>
+<!-- Toast Notification Modal for micro-interaction -->
+<div class="fixed top-20 left-1/2 -translate-x-1/2 z-50 transition-all duration-300 transform -translate-y-6 opacity-0 pointer-events-none bg-stone-900 text-white px-5 py-3 rounded-full shadow-2xl flex items-center gap-2.5" id="paymentToast">
+<span class="material-symbols-outlined text-[19px] text-emerald-400" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="text-[13px] font-semibold" id="toastText">¡Reserva confirmada con éxito!</span>
+</div>
+<script>
+    // Radio toggle logic
+    document.querySelectorAll('.payment-radio').forEach((radio) => {
+      radio.addEventListener('change', (e) => {
+        // Reset all cards
+        document.querySelectorAll('.payment-card').forEach((card) => {
+          card.classList.remove('border-[#1F5C46]', 'border-2');
+          card.classList.add('border', 'border-surface-container-high/70');
+          const indicator = card.querySelector('div:last-child');
+          const dot = indicator.querySelector('span');
+          indicator.className = 'w-5 h-5 rounded-full flex items-center justify-center shrink-0 border-2 border-outline-variant bg-transparent';
+          dot.className = 'w-2 h-2 rounded-full bg-transparent';
+        });
+
+        // Activate selected card
+        const currentCard = e.target.closest('.payment-card');
+        currentCard.classList.remove('border-surface-container-high/70', 'border');
+        currentCard.classList.add('border-[#1F5C46]', 'border-2');
+        const activeIndicator = currentCard.querySelector('div:last-child');
+        const activeDot = activeIndicator.querySelector('span');
+        activeIndicator.className = 'w-5 h-5 rounded-full flex items-center justify-center shrink-0 bg-[#1F5C46] text-white';
+        activeDot.className = 'w-2 h-2 rounded-full bg-white';
+
+        // Update CTA label if Local cash is picked
+        const btnLabel = document.getElementById('btnLabel');
+        if (e.target.value === 'cash') {
+          btnLabel.textContent = 'Confirmar cita (Pagar en local)';
+        } else {
+          btnLabel.textContent = 'Pagar ahora · $15.00 USD';
+        }
+      });
+    });
+
+    function handlePayment() {
+      const btn = document.getElementById('payBtn');
+      const originalText = document.getElementById('btnLabel').textContent;
+      const toast = document.getElementById('paymentToast');
+
+      btn.disabled = true;
+      document.getElementById('btnLabel').textContent = 'Procesando pago...';
+
+      setTimeout(() => {
+        toast.classList.remove('-translate-y-6', 'opacity-0', 'pointer-events-none');
+        toast.classList.add('translate-y-0', 'opacity-100');
+
+        setTimeout(() => {
+          toast.classList.add('-translate-y-6', 'opacity-0', 'pointer-events-none');
+          toast.classList.remove('translate-y-0', 'opacity-100');
+          btn.disabled = false;
+          document.getElementById('btnLabel').textContent = originalText;
+        }, 2500);
+      }, 700);
+    }
+  </script>
+</body></html>

@@ -1,0 +1,447 @@
+<!DOCTYPE html><html lang="es"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport">
+<meta content="mobile_stack" name="shell-type">
+<title>Aura Barbería - Detalle del Barbero</title>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "surface-container": "#eeeeeb",
+            "secondary-fixed": "#e5e2e1",
+            "on-secondary-container": "#636262",
+            "surface-container-low": "#f4f4f1",
+            "on-tertiary-container": "#bdc8c3",
+            "on-primary": "#ffffff",
+            "primary-fixed": "#b2f0d3",
+            "error-container": "#ffdad6",
+            "on-primary-fixed-variant": "#10503b",
+            "on-surface-variant": "#404944",
+            "tertiary": "#333d3a",
+            "tertiary-container": "#4a5451",
+            "on-background": "#1a1c1b",
+            "surface": "#F7F7F4",
+            "inverse-on-surface": "#f1f1ee",
+            "on-secondary-fixed": "#1c1b1b",
+            "inverse-primary": "#96d3b7",
+            "tertiary-fixed": "#dae5e0",
+            "tertiary-fixed-dim": "#bec9c4",
+            "on-tertiary": "#ffffff",
+            "surface-dim": "#dadad7",
+            "on-error": "#ffffff",
+            "outline-variant": "#bfc9c2",
+            "on-error-container": "#93000a",
+            "surface-container-high": "#e8e8e5",
+            "on-secondary": "#ffffff",
+            "primary": "#1F5C46",
+            "surface-tint": "#2d6952",
+            "on-tertiary-fixed": "#141d1b",
+            "surface-bright": "#f9f9f6",
+            "secondary-fixed-dim": "#c8c6c5",
+            "inverse-surface": "#2f312f",
+            "outline": "#707973",
+            "background": "#F7F7F4",
+            "secondary-container": "#e2dfde",
+            "primary-fixed-dim": "#96d3b7",
+            "surface-container-highest": "#e2e3e0",
+            "surface-variant": "#e2e3e0",
+            "surface-container-lowest": "#ffffff",
+            "primary-container": "#1F5C46",
+            "on-primary-fixed": "#002115",
+            "on-surface": "#1a1c1b",
+            "on-tertiary-fixed-variant": "#3f4946",
+            "on-primary-container": "#95d2b6",
+            "error": "#ba1a1a",
+            "on-secondary-fixed-variant": "#474746",
+            "secondary": "#5f5e5e"
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          spacing: {
+            "space-lg": "1.5rem",
+            "space-xs": "0.25rem",
+            "gutter": "1rem",
+            "space-xl": "2rem",
+            "margin": "1.25rem",
+            "space-sm": "0.5rem",
+            "space-md": "1rem"
+          },
+          fontFamily: {
+            "display-lg": ["Manrope", "sans-serif"],
+            "headline-md": ["Manrope", "sans-serif"],
+            "body-md": ["Manrope", "sans-serif"],
+            "headline-lg": ["Manrope", "sans-serif"],
+            "label-lg": ["Manrope", "sans-serif"],
+            "display-md": ["Manrope", "sans-serif"],
+            "body-lg": ["Manrope", "sans-serif"],
+            "label-sm": ["Manrope", "sans-serif"],
+            "body-sm": ["Manrope", "sans-serif"],
+            "label-md": ["Manrope", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+<style>
+    @layer base {
+      html, body {
+        width: 100vw;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        overscroll-behavior: none;
+      }
+      .pb-safe {
+        padding-bottom: env(safe-area-inset-bottom, 0px);
+      }
+      .pt-safe {
+        padding-top: env(safe-area-inset-top, 0px);
+      }
+    }
+    ::-webkit-scrollbar {
+      display: none;
+    }
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background font-body-md text-on-surface flex flex-col min-h-screen selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- Main Scrollable Content -->
+<main class="flex flex-col relative w-full pb-28">
+<!-- Hero Image Area with Overlaid Floating Action Buttons -->
+<div class="relative w-full h-84 min-h-[340px]">
+<img alt="Carlos 'El Maestro' Ruiz en el taller de Aura Barbería" class="w-full h-full object-cover object-center" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBSayL-bTiKKG6GEFjD6lOgWsjVPOSxU6Nw-Fp-63f0SjojlqauKRQBhHU-r1ITrMiCj9hvg0JzIXII05nvGR9C2lsJjjKhyzXQc3Xv6F3kk3NGB2X6lLG27gKrCXQVibr6KMcVo-dPtKIjr211JRHzbuurAvBeezV81bZrruY7XSTXUNR7rNMwGo5Yucdl-ZjMO7YUms7jiqZ81q0fuAgEaGAmEpcD2BvTnfce3jiXZ3UeiM_1ZeDa">
+<!-- Gradient overlay for legibility & smooth blend -->
+<div class="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/40 pointer-events-none"></div>
+<!-- Floating App Bar (Back & Favorite Heart) -->
+<div class="absolute top-0 inset-x-0 pt-safe z-30 px-margin flex items-center justify-between h-16">
+<button aria-label="Volver atrás" class="w-11 h-11 rounded-full bg-white/80 backdrop-blur-md flex items-center justify-center text-on-surface shadow-md active:scale-95 transition-all hover:bg-white" onclick="history.back()">
+<span class="material-symbols-outlined text-[22px]">arrow_back</span>
+</button>
+<div class="flex items-center gap-2">
+<button aria-label="Guardar barbero en favoritos" class="w-11 h-11 rounded-full bg-white/80 backdrop-blur-md flex items-center justify-center text-on-surface shadow-md active:scale-95 transition-all hover:bg-white" id="btn-fav" onclick="toggleFavorite()">
+<span class="material-symbols-outlined text-[22px] transition-colors" id="fav-icon" style="font-variation-settings: 'FILL' 0;">favorite</span>
+</button>
+</div>
+</div>
+<!-- Live Availability Tag -->
+<div class="absolute bottom-10 left-margin z-10">
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-lowest/95 backdrop-blur-md shadow-sm border border-black/5">
+<span class="w-2 h-2 rounded-full bg-[#1F5C46] animate-pulse"></span>
+<span class="font-label-sm text-[11px] font-bold tracking-wider text-[#1F5C46] uppercase">Disponible Hoy</span>
+</div>
+</div>
+</div>
+<!-- Content Wrapper with Negative Margin for overlapping hero -->
+<div class="relative px-margin -mt-6 z-20 flex flex-col gap-5">
+<!-- Profile Info Card (Overlapping Hero) -->
+<div class="bg-surface-container-lowest rounded-2xl p-5 shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-black/[0.04]">
+<div class="flex flex-col">
+<div class="flex items-start justify-between gap-2">
+<div>
+<h1 class="font-display-md text-[24px] leading-tight font-bold text-on-surface tracking-tight">
+                Carlos "El Maestro" Ruiz
+              </h1>
+<p class="font-body-sm text-[13px] text-secondary font-medium mt-1">
+                Barbero Senior · 7 años de experiencia
+              </p>
+</div>
+<div class="w-10 h-10 rounded-xl bg-[#1F5C46]/10 flex items-center justify-center text-[#1F5C46] shrink-0">
+<span class="material-symbols-outlined text-[22px]">verified</span>
+</div>
+</div>
+<!-- Badges Row -->
+<div class="mt-4 pt-3.5 border-t border-surface-container-high/60 flex items-center gap-2 overflow-x-auto no-scrollbar">
+<!-- Badge 1: Rating -->
+<div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-50 border border-amber-200/60 shrink-0">
+<span class="text-xs">⭐</span>
+<span class="font-label-md text-xs font-bold text-amber-950">4.9</span>
+<span class="font-body-sm text-[11px] text-amber-800/80">(184 reseñas)</span>
+</div>
+<!-- Badge 2: Ranking -->
+<div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#1F5C46]/10 border border-[#1F5C46]/20 shrink-0">
+<span class="text-xs">🏆</span>
+<span class="font-label-md text-xs font-bold text-[#1F5C46]">Top #1 Maestro</span>
+</div>
+<!-- Badge 3: Certification -->
+<div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-surface-container-low border border-surface-container-high shrink-0">
+<span class="text-xs">🛡️</span>
+<span class="font-label-md text-xs font-semibold text-on-surface">Certificado Master</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Section: Acerca de -->
+<section class="flex flex-col">
+<h2 class="font-headline-md text-base font-bold text-on-surface mb-2.5 px-0.5">
+          Acerca de
+        </h2>
+<div class="bg-surface-container-lowest p-4 rounded-2xl border border-black/[0.04] shadow-sm">
+<p class="font-body-md text-sm text-on-surface-variant leading-relaxed">
+            Especialista en degradados milimétricos (fades), navaja libre y perfilado de barba clásica. Apasionado del detalle y la estética masculina.
+          </p>
+<div class="mt-3.5 pt-3 border-t border-surface-container flex items-center justify-between text-secondary text-xs">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-[#1F5C46]">straighten</span>
+<span>Precisión milimétrica</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-[#1F5C46]">spa</span>
+<span>Ritual tradicional</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Section: Galería de trabajos (4-grid thumbnail gallery with rounded-xl corners) -->
+<section class="flex flex-col">
+<div class="flex items-center justify-between mb-2.5 px-0.5">
+<h2 class="font-headline-md text-base font-bold text-on-surface">
+            Galería de trabajos
+          </h2>
+<span class="font-label-sm text-[11px] font-bold text-secondary uppercase tracking-wider">
+            Cortes y Barbas
+          </span>
+</div>
+<div class="grid grid-cols-4 gap-2.5">
+<div class="aspect-square rounded-xl overflow-hidden bg-surface-container-high shadow-sm group">
+<img alt="Corte Low Fade nítido realizado por Carlos" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBObL71SeR-acEf62dSsTZY5KBHpTgKbt9UMJajk21W5p76EJUA_nxMC42ILg1YOLDOafKqJjawld_jiRX1qZbYUwWiDURW7ChJyJ4mMgXoADAu6SOjWi4UsEXIK6mLbEo0DNQL4yHQpp4kPeM_UJdb4vJAy7f5SSXQvM1o1ORQinpDle-hqARL-43VSE0rqLDEdBmBoBQXxYHHuluIKVV0RYEliajI13-wXfA45DzSqv0v-TPPxAeJ">
+</div>
+<div class="aspect-square rounded-xl overflow-hidden bg-surface-container-high shadow-sm group">
+<img alt="Perfilado de barba y toalla caliente por Carlos" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbGdKdsRYVt783xXJJ8YbondqO4u81AuQ6UW07q6YD7OS7mm72sa7E4KU_NYfVZ8abMcxXUcDC0h-sVE2UBOZkUZv1BT0jl2u8x7tS8VgbWe95h83FI8eVONSjZWqC8AsGy7GHmZsRJ_YaYHdzj2wVE4W2NjuJtoZbjFqKmhETTExebEu0M_Er_XKRsvQSf1dxV2Vr9pFk1wLMEAXsW5yaA6rJyGredHR6qw1kns90N8hOv0vt1PDP">
+</div>
+<div class="aspect-square rounded-xl overflow-hidden bg-surface-container-high shadow-sm group">
+<img alt="Texturizado contemporáneo y degradado" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCp5FHvpfwvnbmwGYyBBHKhW7algy3FZPBzl0wmL252jTGZaZ4eW4CrtoY-5K3IudTudgpGfb_fA-QQMJ4Ix5SL6wo9zo1pfAgRsFrmSLNMSP8Dsdo2-U4l7t36phrBGnzhxXVGbMravDVZU5dZ8IPXBHMV52cfFvYDTiTr-kEk91f2oNy4q6Tt94L1amihMp0xISkHexh0SJ8cGqx43RA-Ar9C2CCZ7SuV69E9gqzonhgNZXkjpWQI">
+</div>
+<div class="aspect-square rounded-xl overflow-hidden bg-surface-container-high shadow-sm group">
+<img alt="Afeitado clásico y estilo pompadour" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBcwS_f5X5ELmFSmDky9lzeETfBRjZ_6juBcoozIycoz3mtjObNjQskTPTdcMMGM0Ez7rdqF00MuesBU47r4pT8W4QTrq_x5WQBakLXFu7EsOfwmMv0oT6B-dgIK-HZb2Zg9PueBroIfpL6HkRH6xi_1Wp8Ej9dbzYWvg9OJP-hPFNvC6mMFXgyn4ZYAwp3QUXO9HbV1HjVDCk8ory9uN4ayefPuoRxrlMRWMY89Vr0oSKywmw2XqV_">
+</div>
+</div>
+</section>
+<!-- Section: Servicios de Carlos -->
+<section class="flex flex-col">
+<div class="flex items-center justify-between mb-2.5 px-0.5">
+<h2 class="font-headline-md text-base font-bold text-on-surface">
+            Servicios de Carlos
+          </h2>
+<span class="font-body-sm text-xs text-secondary">
+            Toca para seleccionar
+          </span>
+</div>
+<div class="flex flex-col gap-2.5" id="services-container">
+<!-- Servicio 1: Corte Clásico Fade -->
+<div class="service-card group cursor-pointer bg-surface-container-lowest p-4 rounded-2xl border-2 border-[#1F5C46] shadow-sm flex items-center justify-between transition-all active:scale-[0.99] bg-[#1F5C46]/[0.02]" onclick="selectService(this, 'Corte Clásico Fade', '18')">
+<div class="flex items-center gap-3.5 min-w-0">
+<div class="service-icon-box w-11 h-11 rounded-xl bg-[#1F5C46]/10 text-[#1F5C46] flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[22px]">content_cut</span>
+</div>
+<div class="min-w-0">
+<h3 class="font-headline-md text-[15px] font-semibold text-on-surface truncate">
+                  Corte Clásico Fade
+                </h3>
+<div class="flex items-center gap-2 text-secondary text-xs mt-0.5">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+                    40 min
+                  </span>
+<span>·</span>
+<span>Degradado y lavado express</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-3 shrink-0 ml-2">
+<div class="text-right">
+<span class="font-headline-md text-[15px] font-bold text-[#1F5C46]">$18 USD</span>
+</div>
+<div class="service-radio w-5 h-5 rounded-full border-2 border-[#1F5C46] bg-[#1F5C46] flex items-center justify-center text-white transition-all">
+<span class="material-symbols-outlined text-[13px] font-bold">check</span>
+</div>
+</div>
+</div>
+<!-- Servicio 2: Ritual de Barba y Toalla Caliente -->
+<div class="service-card group cursor-pointer bg-surface-container-lowest p-4 rounded-2xl border-2 border-transparent shadow-sm flex items-center justify-between transition-all active:scale-[0.99]" onclick="selectService(this, 'Ritual de Barba y Toalla Caliente', '14')">
+<div class="flex items-center gap-3.5 min-w-0">
+<div class="service-icon-box w-11 h-11 rounded-xl bg-surface-container text-secondary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[22px]">face</span>
+</div>
+<div class="min-w-0">
+<h3 class="font-headline-md text-[15px] font-semibold text-on-surface truncate">
+                  Ritual de Barba y Toalla Caliente
+                </h3>
+<div class="flex items-center gap-2 text-secondary text-xs mt-0.5">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+                    30 min
+                  </span>
+<span>·</span>
+<span>Navaja libre y aceites</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-3 shrink-0 ml-2">
+<div class="text-right">
+<span class="font-headline-md text-[15px] font-bold text-on-surface">$14 USD</span>
+</div>
+<div class="service-radio w-5 h-5 rounded-full border-2 border-outline-variant bg-transparent flex items-center justify-center text-transparent transition-all">
+<span class="material-symbols-outlined text-[13px] font-bold">check</span>
+</div>
+</div>
+</div>
+<!-- Servicio 3: Combo Signature -->
+<div class="service-card group cursor-pointer bg-surface-container-lowest p-4 rounded-2xl border-2 border-transparent shadow-sm flex items-center justify-between transition-all active:scale-[0.99]" onclick="selectService(this, 'Combo Signature (Corte + Barba + Lavado)', '28')">
+<div class="flex items-center gap-3.5 min-w-0">
+<div class="service-icon-box w-11 h-11 rounded-xl bg-surface-container text-secondary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[22px]">auto_awesome</span>
+</div>
+<div class="min-w-0">
+<div class="flex items-center gap-1.5">
+<h3 class="font-headline-md text-[15px] font-semibold text-on-surface truncate">
+                    Combo Signature
+                  </h3>
+<span class="bg-amber-100 text-amber-900 text-[10px] font-bold px-1.5 py-0.5 rounded uppercase">Popular</span>
+</div>
+<div class="flex items-center gap-2 text-secondary text-xs mt-0.5">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+                    60 min
+                  </span>
+<span>·</span>
+<span>Corte + Barba + Lavado</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-3 shrink-0 ml-2">
+<div class="text-right">
+<span class="font-headline-md text-[15px] font-bold text-on-surface">$28 USD</span>
+</div>
+<div class="service-radio w-5 h-5 rounded-full border-2 border-outline-variant bg-transparent flex items-center justify-center text-transparent transition-all">
+<span class="material-symbols-outlined text-[13px] font-bold">check</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Fixed Bottom Bar (Sticky) -->
+<aside class="fixed bottom-0 inset-x-0 z-40 bg-surface/95 backdrop-blur-xl border-t border-black/[0.06] px-margin py-3 pb-safe shadow-[0_-8px_24px_rgba(0,0,0,0.06)]">
+<div class="max-w-md mx-auto flex items-center justify-between gap-4">
+<!-- Left: Price Preview -->
+<div class="flex flex-col min-w-[110px]">
+<span class="font-body-sm text-[11px] font-semibold text-secondary uppercase tracking-wider">
+          Total estimado
+        </span>
+<div class="flex items-baseline gap-1">
+<span class="font-display-md text-[20px] font-bold text-[#1F5C46]" id="price-preview">
+            $18 USD
+          </span>
+</div>
+</div>
+<!-- Right: Button 52px height in Forest Green (#1F5C46) -->
+<button class="flex-1 h-[52px] rounded-2xl text-white font-label-lg text-[15px] font-bold flex items-center justify-center gap-2 shadow-md shadow-[#1F5C46]/20 active:scale-[0.98] transition-all hover:brightness-105" id="btn-book" onclick="handleBooking()" style="background-color: #1F5C46;">
+<span>Reservar cita</span>
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+</div>
+</aside>
+<!-- Interactive Logic -->
+<script>
+    let isFavorite = false;
+    let selectedService = "Corte Clásico Fade";
+    let selectedPrice = "18";
+
+    function toggleFavorite() {
+      isFavorite = !isFavorite;
+      const favIcon = document.getElementById('fav-icon');
+      const favBtn = document.getElementById('btn-fav');
+      if (isFavorite) {
+        favIcon.style.fontVariationSettings = "'FILL' 1";
+        favIcon.classList.add('text-error');
+        favBtn.classList.add('text-error');
+      } else {
+        favIcon.style.fontVariationSettings = "'FILL' 0";
+        favIcon.classList.remove('text-error');
+        favBtn.classList.remove('text-error');
+      }
+    }
+
+    function selectService(element, serviceName, price) {
+      selectedService = serviceName;
+      selectedPrice = price;
+
+      // Reset all cards
+      document.querySelectorAll('.service-card').forEach(card => {
+        card.classList.remove('border-[#1F5C46]', 'bg-[#1F5C46]/[0.02]');
+        card.classList.add('border-transparent');
+        
+        const radio = card.querySelector('.service-radio');
+        radio.classList.remove('border-[#1F5C46]', 'bg-[#1F5C46]', 'text-white');
+        radio.classList.add('border-outline-variant', 'bg-transparent', 'text-transparent');
+
+        const iconBox = card.querySelector('.service-icon-box');
+        iconBox.classList.remove('bg-[#1F5C46]/10', 'text-[#1F5C46]');
+        iconBox.classList.add('bg-surface-container', 'text-secondary');
+
+        const priceEl = card.querySelector('.font-headline-md');
+        if (priceEl) {
+          priceEl.classList.remove('text-[#1F5C46]');
+          priceEl.classList.add('text-on-surface');
+        }
+      });
+
+      // Highlight selected card
+      element.classList.remove('border-transparent');
+      element.classList.add('border-[#1F5C46]', 'bg-[#1F5C46]/[0.02]');
+
+      const activeRadio = element.querySelector('.service-radio');
+      activeRadio.classList.remove('border-outline-variant', 'bg-transparent', 'text-transparent');
+      activeRadio.classList.add('border-[#1F5C46]', 'bg-[#1F5C46]', 'text-white');
+
+      const activeIconBox = element.querySelector('.service-icon-box');
+      activeIconBox.classList.remove('bg-surface-container', 'text-secondary');
+      activeIconBox.classList.add('bg-[#1F5C46]/10', 'text-[#1F5C46]');
+
+      const activePriceEl = element.querySelector('.font-headline-md');
+      if (activePriceEl) {
+        activePriceEl.classList.remove('text-on-surface');
+        activePriceEl.classList.add('text-[#1F5C46]');
+      }
+
+      // Update sticky bottom preview
+      const previewEl = document.getElementById('price-preview');
+      if (previewEl) {
+        previewEl.innerText = '$' + price + ' USD';
+      }
+    }
+
+    function handleBooking() {
+      const btn = document.getElementById('btn-book');
+      const originalContent = btn.innerHTML;
+      btn.innerHTML = `
+        <span class="material-symbols-outlined text-[20px] animate-spin">progress_activity</span>
+        <span>Preparando agenda...</span>
+      `;
+      setTimeout(() => {
+        btn.innerHTML = `
+          <span class="material-symbols-outlined text-[20px]">check_circle</span>
+          <span>¡Horarios listos!</span>
+        `;
+        setTimeout(() => {
+          btn.innerHTML = originalContent;
+        }, 1500);
+      }, 700);
+    }
+  </script>
+</body></html>

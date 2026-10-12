@@ -1,0 +1,354 @@
+<!DOCTYPE html><html lang="es"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport">
+<meta content="mobile_blank" name="shell-type">
+<title>Aura Barbería - Iniciar Sesión</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "surface-container": "#eeeeeb",
+            "secondary-fixed": "#e5e2e1",
+            "on-secondary-container": "#636262",
+            "surface-container-low": "#f4f4f1",
+            "on-tertiary-container": "#bdc8c3",
+            "on-primary": "#ffffff",
+            "primary-fixed": "#b2f0d3",
+            "error-container": "#ffdad6",
+            "on-primary-fixed-variant": "#10503b",
+            "on-surface-variant": "#404944",
+            "tertiary": "#333d3a",
+            "tertiary-container": "#4a5451",
+            "on-background": "#1a1c1b",
+            "surface": "#F7F7F4",
+            "inverse-on-surface": "#f1f1ee",
+            "on-secondary-fixed": "#1c1b1b",
+            "inverse-primary": "#96d3b7",
+            "tertiary-fixed": "#dae5e0",
+            "tertiary-fixed-dim": "#bec9c4",
+            "on-tertiary": "#ffffff",
+            "surface-dim": "#dadad7",
+            "on-error": "#ffffff",
+            "outline-variant": "#bfc9c2",
+            "on-error-container": "#93000a",
+            "surface-container-high": "#e8e8e5",
+            "on-secondary": "#ffffff",
+            "primary": "#1F5C46",
+            "surface-tint": "#2d6952",
+            "on-tertiary-fixed": "#141d1b",
+            "surface-bright": "#f9f9f6",
+            "secondary-fixed-dim": "#c8c6c5",
+            "inverse-surface": "#2f312f",
+            "outline": "#707973",
+            "background": "#F7F7F4",
+            "secondary-container": "#e2dfde",
+            "primary-fixed-dim": "#96d3b7",
+            "surface-container-highest": "#e2e3e0",
+            "surface-variant": "#e2e3e0",
+            "surface-container-lowest": "#ffffff",
+            "primary-container": "#1F5C46",
+            "on-primary-fixed": "#002115",
+            "on-surface": "#1a1c1b",
+            "on-tertiary-fixed-variant": "#3f4946",
+            "on-primary-container": "#95d2b6",
+            "error": "#ba1a1a",
+            "on-secondary-fixed-variant": "#474746",
+            "secondary": "#5f5e5e"
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "2xl": "1rem",
+            "3xl": "1.5rem",
+            "full": "9999px"
+          },
+          spacing: {
+            "space-lg": "1.5rem",
+            "space-xs": "0.25rem",
+            "gutter": "1rem",
+            "space-xl": "2rem",
+            "margin": "1.25rem",
+            "space-sm": "0.5rem",
+            "space-md": "1rem"
+          },
+          fontFamily: {
+            "sans": ["Manrope", "sans-serif"],
+            "display-lg": ["Manrope"],
+            "headline-md": ["Manrope"],
+            "body-md": ["Manrope"],
+            "headline-lg": ["Manrope"],
+            "label-lg": ["Manrope"],
+            "display-md": ["Manrope"],
+            "body-lg": ["Manrope"],
+            "label-sm": ["Manrope"],
+            "body-sm": ["Manrope"],
+            "label-md": ["Manrope"]
+          }
+        }
+      }
+    };
+  </script>
+<style>
+    @layer base {
+      html, body {
+        width: 100vw;
+        margin: 0;
+        padding: 0;
+        background-color: #F7F7F4;
+      }
+      body {
+        overscroll-behavior: none;
+      }
+      .pb-safe {
+        padding-bottom: env(safe-area-inset-bottom, 16px);
+      }
+      .pt-safe {
+        padding-top: env(safe-area-inset-top, 16px);
+      }
+    }
+    ::-webkit-scrollbar {
+      display: none;
+    }
+  </style>
+</head>
+<body class="bg-[#F7F7F4] font-sans text-on-surface antialiased min-h-screen selection:bg-primary/20 selection:text-primary">
+<main class="flex flex-col relative w-full pt-safe pb-safe min-h-screen justify-between"><div class="flex flex-col w-full pb-8">
+<!-- Barra Superior -->
+<header class="flex items-center justify-between px-5 py-4 w-full">
+<button aria-label="Volver atrás" class="flex items-center justify-center w-10 h-10 rounded-full bg-surface-container active:scale-95 transition-all text-on-surface" type="button">
+<span class="material-symbols-outlined text-[20px]">arrow_back</span>
+</button>
+<div class="flex items-center justify-center"><img src="https://lh3.googleusercontent.com/aida/AEtjO1WEc9DKT2pw-kiXIyJJ1ZXWdCPeTtUyLKwUCUUdQt3Va3izgzxGMFNyHHu6RbpXARNSdFnkXD_p4JuVIeStEuWNhA0jTocCRTBQDxo05l9RkPGCJOzrQMtmEDMZbOtKwOC2pKVb60JzHIhcGkpyYhPQmGouljARvYKTHtzjh-kcTHG0iS-tJ6MX9tMjwYB-BKuQ1NPYlFyivbALGhK5yjr8y4NUD7zKkxXbLVvvn0oQf4l2DOY87efEnyI" alt="Logo Aura Barbería" class="h-8 w-auto object-contain"></div>
+<div class="w-10"></div>
+</header>
+<!-- Contenedor Principal de Registro -->
+<div class="px-5 flex flex-col gap-6 mt-1">
+<!-- Encabezado de Bienvenida -->
+<div class="flex flex-col gap-2">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary-container">Membresía Exclusiva</span>
+<h1 class="font-display-md text-display-md text-on-surface">Crea tu cuenta</h1>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+        Únete a Aura Barbería para agendar tus citas en segundos y acceder a beneficios exclusivos.
+      </p>
+</div>
+<!-- Micro-card de bienvenida visual con barbero / atmósfera -->
+<div class="bg-surface-container-lowest p-3.5 rounded-xl shadow-sm flex items-center gap-3.5">
+<div class="w-12 h-12 rounded-lg overflow-hidden shrink-0 bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="A portrait of a master barber in a luxury salon with emerald green and warm linen tones, meticulously arranging grooming shears under warm atmospheric lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2tu9wr4F1EdREXsVamrl2c2eNRQiK9ip9pgX2_TFW5-FwbgFZN883SVtQukUwf1KjoZUEuifQybE6VvoAbXXoO0xPmbNueh9VHk6E6598rE02eXEzxPyaD-2Z4V27CoT2OyLCFF6xO-jo5ilIUb8IlCMOaaoeHDqYeuBBb7ZCnsUv95Qsy-GUwbvhrhPDCbs5LYTYbm3eEL3cRYeaQxSq5CQl9L0rHlIpVfUsjpgEiRTXpFs6yC5K">
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-on-surface truncate">Experiencia de primer nivel</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">Cuidado personal con rituales de autor</span>
+</div>
+</div>
+<!-- Formulario -->
+<form class="flex flex-col gap-4" onsubmit="event.preventDefault();">
+<!-- Nombre Completo -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface" for="fullName">Nombre completo</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3.5 text-outline text-[20px] pointer-events-none">person</span>
+<input class="w-full h-[50px] pl-11 pr-4 bg-surface-container-lowest rounded-xl font-body-md text-body-md text-on-surface placeholder:text-outline focus:outline-none focus:bg-surface-container-low transition-colors" id="fullName" placeholder="ej. Mateo Silva" type="text">
+</div>
+</div>
+<!-- Correo Electrónico -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface" for="email">Correo electrónico</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3.5 text-outline text-[20px] pointer-events-none">mail</span>
+<input class="w-full h-[50px] pl-11 pr-4 bg-surface-container-lowest rounded-xl font-body-md text-body-md text-on-surface placeholder:text-outline focus:outline-none focus:bg-surface-container-low transition-colors" id="email" placeholder="ej. mateo.silva@email.com" type="email">
+</div>
+</div>
+<!-- Número de Teléfono -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface" for="phone">Número de teléfono móvil</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3.5 text-outline text-[20px] pointer-events-none">call</span>
+<input class="w-full h-[50px] pl-11 pr-4 bg-surface-container-lowest rounded-xl font-body-md text-body-md text-on-surface placeholder:text-outline focus:outline-none focus:bg-surface-container-low transition-colors" id="phone" placeholder="+1 (555) 000-0000" type="tel">
+</div>
+</div>
+<!-- Contraseña -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface" for="regPasswordInput">Contraseña</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3.5 text-outline text-[20px] pointer-events-none">lock</span>
+<input class="w-full h-[50px] pl-11 pr-12 bg-surface-container-lowest rounded-xl font-body-md text-body-md text-on-surface placeholder:text-outline focus:outline-none focus:bg-surface-container-low transition-colors" id="regPasswordInput" placeholder="Crea una contraseña segura" type="password">
+<button aria-label="Mostrar contraseña" class="absolute right-3 p-1.5 text-outline hover:text-on-surface transition-colors flex items-center justify-center" id="regTogglePassword" type="button">
+<span class="material-symbols-outlined text-[20px]" id="regEyeIcon">visibility</span>
+</button>
+</div>
+<!-- Medidor sutil de seguridad -->
+<div class="flex flex-col gap-1.5 mt-1">
+<div class="grid grid-cols-4 gap-1.5 h-1 w-full">
+<div class="h-full rounded-full bg-surface-container transition-colors duration-300" id="bar1"></div>
+<div class="h-full rounded-full bg-surface-container transition-colors duration-300" id="bar2"></div>
+<div class="h-full rounded-full bg-surface-container transition-colors duration-300" id="bar3"></div>
+<div class="h-full rounded-full bg-surface-container transition-colors duration-300" id="bar4"></div>
+</div>
+<div class="flex justify-between items-center px-0.5">
+<span class="font-body-sm text-body-sm text-outline" id="strengthText">Seguridad: introduce tu clave</span>
+<span class="font-body-sm text-body-sm text-outline">Mínimo 8 caracteres</span>
+</div>
+</div>
+</div>
+<!-- Casilla de Verificación de Términos -->
+<div class="flex items-start gap-3 mt-1 cursor-pointer select-none" id="termsContainer">
+<div class="pt-0.5">
+<div class="w-5 h-5 rounded-lg bg-surface-container-lowest flex items-center justify-center text-on-primary transition-all shadow-sm" id="checkboxCustom">
+<span class="material-symbols-outlined text-[16px] hidden" id="checkboxCheck">check</span>
+</div>
+<input class="sr-only" id="termsInput" type="checkbox">
+</div>
+<label class="font-body-sm text-body-sm text-on-surface-variant cursor-pointer leading-snug" for="termsInput">
+          Acepto los <span class="font-label-md text-label-md text-primary-container">Términos y Condiciones</span> y la <span class="font-label-md text-label-md text-primary-container">Política de Privacidad</span> de Aura Barbería
+        </label>
+</div>
+<!-- Botón de Registro Principal -->
+<button class="w-full h-[52px] bg-primary-container text-on-primary rounded-xl font-label-lg text-label-lg shadow-md active:scale-[0.98] active:bg-primary transition-all flex items-center justify-center gap-2 mt-2" type="submit">
+<span class="">Crear cuenta</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</form>
+<!-- Separador -->
+<div class="flex items-center gap-4 py-1">
+<div class="h-px bg-surface-container-high flex-1"></div>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">O regístrate con</span>
+<div class="h-px bg-surface-container-high flex-1"></div>
+</div>
+<!-- Acceso Social -->
+<div class="grid grid-cols-2 gap-3">
+<!-- Botón Google -->
+<button class="h-[52px] bg-surface-container-lowest text-on-surface rounded-xl font-label-md text-label-md shadow-sm active:bg-surface-container-low transition-all flex items-center justify-center gap-2 px-3" type="button">
+<svg class="w-5 h-5" viewBox="0 0 24 24">
+<path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path>
+<path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path>
+<path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"></path>
+<path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"></path>
+</svg>
+<span class="">Google</span>
+</button>
+<!-- Botón Apple -->
+<button class="h-[52px] bg-surface-container-lowest text-on-surface rounded-xl font-label-md text-label-md shadow-sm active:bg-surface-container-low transition-all flex items-center justify-center gap-2 px-3" type="button">
+<svg class="w-5 h-5 fill-current text-on-surface" viewBox="0 0 24 24">
+<path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.84c.64-.78 1.08-1.86.96-2.84-.93.04-2.07.62-2.73 1.39-.58.67-1.09 1.76-.95 2.8 1.04.08 2.08-.57 2.72-1.35z"></path>
+</svg>
+<span class="">Apple</span>
+</button>
+</div>
+<!-- Pie de Página -->
+<div class="flex items-center justify-center gap-1.5 pt-2 pb-4">
+<span class="font-body-md text-body-md text-on-surface-variant">¿Ya tienes una cuenta?</span>
+<button class="font-label-md text-label-md text-primary-container active:underline transition-all" type="button">
+        Iniciar sesión
+      </button>
+</div>
+</div>
+</div>
+<script>
+  (function() {
+    // Alternar visibilidad de contraseña
+    const passwordInput = document.getElementById('regPasswordInput');
+    const toggleBtn = document.getElementById('regTogglePassword');
+    const eyeIcon = document.getElementById('regEyeIcon');
+
+    if (toggleBtn && passwordInput && eyeIcon) {
+      toggleBtn.addEventListener('click', function() {
+        const isPassword = passwordInput.getAttribute('type') === 'password';
+        passwordInput.setAttribute('type', isPassword ? 'text' : 'password');
+        eyeIcon.textContent = isPassword ? 'visibility_off' : 'visibility';
+      });
+    }
+
+    // Medidor reactivo de contraseña
+    const bar1 = document.getElementById('bar1');
+    const bar2 = document.getElementById('bar2');
+    const bar3 = document.getElementById('bar3');
+    const bar4 = document.getElementById('bar4');
+    const strengthText = document.getElementById('strengthText');
+
+    if (passwordInput && bar1 && bar2 && bar3 && bar4 && strengthText) {
+      passwordInput.addEventListener('input', function(e) {
+        const val = e.target.value;
+        const len = val.length;
+
+        // Reset
+        [bar1, bar2, bar3, bar4].forEach(b => {
+          b.className = 'h-full rounded-full bg-surface-container transition-colors duration-300';
+        });
+
+        if (len === 0) {
+          strengthText.textContent = 'Seguridad: introduce tu clave';
+          strengthText.className = 'font-body-sm text-body-sm text-outline';
+        } else if (len < 6) {
+          bar1.className = 'h-full rounded-full bg-error transition-colors duration-300';
+          strengthText.textContent = 'Seguridad: Débil';
+          strengthText.className = 'font-body-sm text-body-sm text-error';
+        } else if (len < 8) {
+          bar1.className = 'h-full rounded-full bg-secondary transition-colors duration-300';
+          bar2.className = 'h-full rounded-full bg-secondary transition-colors duration-300';
+          strengthText.textContent = 'Seguridad: Media';
+          strengthText.className = 'font-body-sm text-body-sm text-secondary';
+        } else if (len < 10) {
+          bar1.className = 'h-full rounded-full bg-primary-container transition-colors duration-300';
+          bar2.className = 'h-full rounded-full bg-primary-container transition-colors duration-300';
+          bar3.className = 'h-full rounded-full bg-primary-container transition-colors duration-300';
+          strengthText.textContent = 'Seguridad: Buena';
+          strengthText.className = 'font-body-sm text-body-sm text-primary-container';
+        } else {
+          bar1.className = 'h-full rounded-full bg-primary transition-colors duration-300';
+          bar2.className = 'h-full rounded-full bg-primary transition-colors duration-300';
+          bar3.className = 'h-full rounded-full bg-primary transition-colors duration-300';
+          bar4.className = 'h-full rounded-full bg-primary transition-colors duration-300';
+          strengthText.textContent = 'Seguridad: Excelente';
+          strengthText.className = 'font-body-sm text-body-sm text-primary';
+        }
+      });
+    }
+
+    // Toggle interactivo de casilla de verificación
+    const termsContainer = document.getElementById('termsContainer');
+    const termsInput = document.getElementById('termsInput');
+    const checkboxCustom = document.getElementById('checkboxCustom');
+    const checkboxCheck = document.getElementById('checkboxCheck');
+
+    if (termsContainer && termsInput && checkboxCustom && checkboxCheck) {
+      termsContainer.addEventListener('click', function(e) {
+        if (e.target.tagName !== 'SPAN' || e.target.id === 'checkboxCheck') {
+          termsInput.checked = !termsInput.checked;
+          if (termsInput.checked) {
+            checkboxCustom.className = 'w-5 h-5 rounded-lg bg-primary-container flex items-center justify-center text-on-primary transition-all shadow-sm';
+            checkboxCheck.classList.remove('hidden');
+          } else {
+            checkboxCustom.className = 'w-5 h-5 rounded-lg bg-surface-container-lowest flex items-center justify-center text-on-primary transition-all shadow-sm';
+            checkboxCheck.classList.add('hidden');
+          }
+        }
+      });
+    }
+  })();
+</script></main>
+<script>
+    (function() {
+      const passwordInput = document.getElementById('passwordInput');
+      const toggleBtn = document.getElementById('togglePassword');
+      const eyeIcon = document.getElementById('eyeIcon');
+
+      if (toggleBtn && passwordInput && eyeIcon) {
+        toggleBtn.addEventListener('click', function() {
+          const isPassword = passwordInput.getAttribute('type') === 'password';
+          passwordInput.setAttribute('type', isPassword ? 'text' : 'password');
+          eyeIcon.textContent = isPassword ? 'visibility_off' : 'visibility';
+        });
+      }
+    })();
+  </script>
+
+
+</body></html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html><html class="h-full" lang="es"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport">
+<title>Aura Barbería - Bienvenida</title>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Playfair+Display:ital,wght@0,600;1,600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#004430",
+            "primary-container": "#1F5C46",
+            "on-primary": "#ffffff",
+            "primary-fixed": "#b2f0d3",
+            "surface": "#121413",
+            "on-surface": "#f9f9f6",
+            "gold-accent": "#D4AF37",
+            "cream-muted": "#E5E2DE",
+            "cream-subtle": "#BFC5C1"
+          },
+          fontFamily: {
+            sans: ["Manrope", "sans-serif"],
+            serif: ["Playfair Display", "serif"]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    @layer base {
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        overscroll-behavior: none;
+      }
+      .pt-safe {
+        padding-top: env(safe-area-inset-top, 0px);
+      }
+      .pb-safe {
+        padding-bottom: env(safe-area-inset-bottom, 0px);
+      }
+    }
+    ::-webkit-scrollbar {
+      display: none;
+    }
+  </style>
+</head>
+<body class="bg-black text-white font-sans antialiased h-full overflow-hidden select-none">
+<!-- Main Viewport Container -->
+<div class="relative w-full h-full flex flex-col justify-between overflow-hidden">
+<!-- Background Image & Atmospheric Scrim Overlay -->
+<div class="absolute inset-0 w-full h-full bg-cover bg-center" data-alt="Master barber meticulously trimming hair in an artisanal high-end barbershop with warm vintage lighting and dark polished wood" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAw2onlyCkLdLBMYjIBEuGWQmyTv1FNCNvWgMvhBxx-3Tba9dK30wgl-wlb8iIZXJiBvGT4tK6go1v6EtutJtByOv0yGu-y6n2UW51DXeWjOHz0rf_ycZWl33JE8vGL5VVBXCw2fgdJd6p5hre8y4zMhdSkn5TwU7SHBZKSBS7iGJvW6yJV736cbqYIBdpBgfbeb7dXr6RQG8W3CE42MY3btYaoMtVNeDaSuTctNak6XVWLOw7V0iDQ');">
+</div>
+<!-- Gradient Overlays: Subtle top vignette, dramatic deep gradient to bottom for readability -->
+<div class="absolute inset-0 bg-gradient-to-t from-black via-black/80 via-40% to-black/40 pointer-events-none"></div>
+<div class="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-transparent pointer-events-none"></div>
+<!-- Subtle Radial Glow behind logo -->
+<div class="absolute top-12 left-1/2 -translate-x-1/2 w-64 h-64 bg-[#1F5C46]/20 rounded-full blur-3xl pointer-events-none"></div>
+<!-- TOP SECTION: Monogram Logo & Brand Tagline -->
+<header class="relative z-10 flex flex-col items-center pt-safe px-6 text-center mt-6">
+<!-- Monogram Emblem -->
+<div class="relative flex items-center justify-center mb-3"><img src="https://lh3.googleusercontent.com/aida/AEtjO1WEc9DKT2pw-kiXIyJJ1ZXWdCPeTtUyLKwUCUUdQt3Va3izgzxGMFNyHHu6RbpXARNSdFnkXD_p4JuVIeStEuWNhA0jTocCRTBQDxo05l9RkPGCJOzrQMtmEDMZbOtKwOC2pKVb60JzHIhcGkpyYhPQmGouljARvYKTHtzjh-kcTHG0iS-tJ6MX9tMjwYB-BKuQ1NPYlFyivbALGhK5yjr8y4NUD7zKkxXbLVvvn0oQf4l2DOY87efEnyI" alt="Logo Aura Barbería" class="h-10 w-auto object-contain drop-shadow-md"></div>
+<!-- Brand Identity -->
+<h2 class="font-sans font-bold text-lg tracking-[0.25em] uppercase text-white/95 drop-shadow-sm">
+        Aura Barbería
+      </h2>
+<span class="text-[11px] uppercase tracking-[0.3em] text-[#b2f0d3] font-semibold mt-1">
+        Corte Clásico &amp; Contemporáneo
+      </span>
+</header>
+<!-- BOTTOM SECTION: Content, Indicators & CTA -->
+<div class="relative z-10 flex flex-col px-6 pb-safe mb-6">
+<div class="max-w-md mx-auto w-full flex flex-col">
+<!-- Title & Subtitle Carousel Item -->
+<div class="mb-6 space-y-3">
+<h1 class="text-3xl font-extrabold text-white tracking-tight leading-tight drop-shadow-md">
+            Reserva tu corte con facilidad
+          </h1>
+<p class="text-base text-cream-muted/80 leading-relaxed font-normal">
+            Maestría artesanal, estilo contemporáneo y atención personalizada en cada detalle.
+          </p>
+</div>
+<!-- Carousel Dot Indicators -->
+<div aria-label="Indicadores de carrusel" class="flex items-center gap-2 mb-8" role="tablist">
+<!-- Active Emerald Pill -->
+<span class="h-1.5 w-7 rounded-full bg-[#10b981] shadow-sm transition-all duration-300"></span>
+<!-- Inactive Subtle Gray Circles -->
+<span class="h-1.5 w-1.5 rounded-full bg-white/30 transition-all duration-300"></span>
+<span class="h-1.5 w-1.5 rounded-full bg-white/30 transition-all duration-300"></span>
+</div>
+<!-- Main Button: 52px height, forest green, rounded-2xl -->
+<button class="w-full h-[52px] rounded-2xl bg-[#1F5C46] hover:bg-[#164333] active:scale-[0.99] transition-all duration-200 shadow-xl shadow-black/40 text-white font-semibold text-base flex items-center justify-center gap-2 cursor-pointer border border-emerald-400/20 group" type="button">
+<span class="">Comenzar</span>
+<span class="material-symbols-outlined text-xl transition-transform duration-200 group-hover:translate-x-0.5">arrow_forward</span>
+</button>
+<!-- Secondary Subtle Link -->
+<div class="mt-4 text-center">
+<p class="text-sm text-neutral-400">
+            ¿Ya tienes una cuenta? 
+            <a class="text-white font-medium hover:text-[#b2f0d3] transition-colors ml-1 focus:outline-none" href="#">
+              Iniciar sesión
+            </a>
+</p>
+</div>
+</div>
+</div>
+</div>
+
+
+</body></html>
