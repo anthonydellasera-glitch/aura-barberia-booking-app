@@ -3,30 +3,188 @@
   const STORAGE_KEY = 'aura-barberia-state-v1';
   const SERVICES_OVERRIDE_KEY = 'aura-services-custom-v1';
 
-  // Helper to load client state
+  // Fallback barbers if window.AURA_DATA is not loaded yet
+  const FALLBACK_BARBERS = [
+    {
+      id: 'carlos', name: 'Carlos Ruiz', fullName: 'Carlos "El Maestro" Ruiz', nickname: 'El Maestro',
+      title: 'Barbero Senior', specialty: 'Fade & Diseños artísticos', shortSpecialty: 'Fade & Diseños',
+      years: 7, rating: 4.9, reviews: 184, next: '15:30',
+      thumb: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCwSmVDrndKZUo3Jz8DlPjqyGlWtqGiYrh-EUSytDlSsugb-IoypW3Krjm2Umn8uns3onqiTf7w9QHKeQyzONAVjj8bAr4Jn0qKzd--JBU085rBLZlxVSY8QG3jaFLYa-ItApG_Za_RfvD7YFGfYktdL-UfgXGz2jkOPwnNNs0p1HHf63bCrHwQOUFbFE8LfBSlSgv3AJGiGl0wI8F7mSg8P3fKk0HjhSxoehz37XI',
+      avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCltWxT4Plv3g2f0uIMQwZvbUPdL5kBo4rOyeFWKouV_byQEA8BoxA9ySJFb0kaRrmQhGbUI_KURMbWngOdXTY_O0_6qHcJisZ-K5oTZ4hXUWMUkT_YgOaGLibLbS0uHE7pkYEgN_bkeHOr7PqEfHWmW1aa801EcMogQfImrKJXlTuJt8tkSlzWGJZRVTPktfBlFkHv_mo7_4r6ZHZ1ju_OFqZNnw77GapLxsD47WGrbTq4CwfjAw5n'
+    },
+    {
+      id: 'daniel', name: 'Daniel Vargas', fullName: 'Daniel Vargas', nickname: '',
+      title: 'Barbero Clásico', specialty: 'Corte clásico, tijera y arreglo de barba', shortSpecialty: 'Corte clásico & Barba',
+      years: 5, rating: 4.8, reviews: 120, next: '16:00',
+      thumb: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC3pn1wGKBlzI71N0kHFbGa0DF1QkMDSO5rBXMdrlVZNrdzr5IxtYl93v8HK1vATZojM4Vwiw6LapgQiRlQ3zHnaFD1HOfPCu0ljcIJKo-ra2e3TDWNzV7EKxZJoegrXKeNiabdZo5xJSDjSP1jl7IoKA0tAl-21v-59M4F1nYTMaKcfDpPlXtMPed_3neVUTMKvFtVLNH5KBc_1F617jGUZYVSh7L8uolneWowK4k',
+      avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBrrBh7yf1zZRL_WYK9gRcBgAoLHyYafHDnC2hBtfSgNLwh63uAVXr5Qy19eAxQWIbNZiAqfiJDtUxcRSOqgy33LszQc9uyUg4pYZRWZuoGxhcMP_eUvy8l_aV5AIVN9JhhPAccVYKcedR837E_CBEh4paWML8fTxGdRLriX73GylkcS0xBeMewCy082KUfw70YKn7DWMkU-GhWelqR20z2YBQX4gzTNqQE-SkUnk4'
+    },
+    {
+      id: 'sofia', name: 'Sofía Morales', fullName: 'Sofía Morales', nickname: '',
+      title: 'Estilista Especialista', specialty: 'Texturizado, colorimetría y tijera', shortSpecialty: 'Textura & Color',
+      years: 6, rating: 4.9, reviews: 156, next: '17:15',
+      thumb: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBjqkyedQWY5iDHKltYuS9lHSM4rfvqQEYBFtythr1fxqVa0o9Vuxgh4eorInyaLVCaIqK6zMr2Zuhbad5WcxlcU1K4eUN1gz6C6pUyrMjX5uz5wLYezxo3nA7WYmppARCu52kxv0x73OuyOuJgsBHloYVKn6pX9_l5bzHL9doejj0OWEA8P1ZmPr8L7Ckbyg6HZENeuCTt4YD3ZGNPS_i9Qm10ohHwz6iJFAN3wbI',
+      avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBjqkyedQWY5iDHKltYuS9lHSM4rfvqQEYBFtythr1fxqVa0o9Vuxgh4eorInyaLVCaIqK6zMr2Zuhbad5WcxlcU1K4eUN1gz6C6pUyrMjX5uz5wLYezxo3nA7WYmppARCu52kxv0x73OuyOuJgsBHloYVKn6pX9_l5bzHL9doejj0OWEA8P1ZmPr8L7Ckbyg6HZENeuCTt4YD3ZGNPS_i9Qm10ohHwz6iJFAN3wbI'
+    },
+    {
+      id: 'javier', name: 'Javier Méndez', fullName: 'Javier Méndez', nickname: '',
+      title: 'Maestro Barbero', specialty: 'Afeitado tradicional ritual y toalla caliente', shortSpecialty: 'Afeitado ritual',
+      years: 8, rating: 4.9, reviews: 210, next: '18:00',
+      thumb: 'https://lh3.googleusercontent.com/aida-public/AB6AXuD3VcXn14TbxaEfgRAd4_zd1uk59i6EZvCH8oW6ubLa6Tu4oO3QbrZSFGAgGkG7wYRcw84yyB7QOKxqJ7Z0paLnY4y2DsatNxBV2r7Fg_5o3-ktj9ah0LGLRXPPvCk6vdR2DeKFfYgdjMXSfjEhMpcKIGFxuLHdhAj1Mad-mF7F9rwZrWaeU4Z-womEFwCIG_2nrXHLWvT_6bugNmQZlklAFsvQStWpfJnbaxEi-x4',
+      avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuD3VcXn14TbxaEfgRAd4_zd1uk59i6EZvCH8oW6ubLa6Tu4oO3QbrZSFGAgGkG7wYRcw84yyB7QOKxqJ7Z0paLnY4y2DsatNxBV2r7Fg_5o3-ktj9ah0LGLRXPPvCk6vdR2DeKFfYgdjMXSfjEhMpcKIGFxuLHdhAj1Mad-mF7F9rwZrWaeU4Z-womEFwCIG_2nrXHLWvT_6bugNmQZlklAFsvQStWpfJnbaxEi-x4'
+    }
+  ];
+
+  const FALLBACK_SERVICES = [
+    { id: 'fade', name: 'Corte Clásico Fade', price: 18, duration: 40, icon: 'content_cut', category: 'cortes', popular: true, desc: 'Degradado limpio a máquina y tijera con lavado refrescante' },
+    { id: 'afeitado', name: 'Afeitado Ritual con Toalla Caliente', price: 14, duration: 30, icon: 'face', category: 'barba', popular: true, desc: 'Vaporizador, espuma tibia, navaja tradicional y bálsamo hidratante' },
+    { id: 'perfilado', name: 'Perfilado de Barba Express', price: 10, duration: 20, icon: 'brush', category: 'barba', desc: 'Alineación de contornos y rebaje con trimmer y aceite esencial' },
+    { id: 'signature', name: 'Aura Signature Pack', price: 30, duration: 65, icon: 'workspace_premium', category: 'combos', popular: true, recommended: true, desc: 'Corte de autor + ritual completo de barba + mascarilla exfoliante' },
+    { id: 'canas', name: 'Camuflaje de Canas / Color', price: 22, duration: 35, icon: 'palette', category: 'tratamientos', desc: 'Tinte sutil para barba o cabello de aspecto 100% natural' }
+  ];
+
+  const DEFAULT_SEED_BOOKINGS = [
+    {
+      id: 'b1', ref: 'AUR-8942', barberId: 'carlos', serviceIds: ['fade'],
+      date: '2026-10-14', time: '10:30', clientName: 'Mateo Silva',
+      subtotal: 18, discount: 3.6, fee: 0.6, total: 15, payment: 'card',
+      status: 'confirmada', createdAt: Date.now() - 3600000 * 24
+    },
+    {
+      id: 'b2', ref: 'AUR-6512', barberId: 'daniel', serviceIds: ['signature'],
+      date: '2026-10-14', time: '11:45', clientName: 'Alejandro Morales',
+      subtotal: 30, discount: 0, fee: 0, total: 30, payment: 'apple',
+      status: 'confirmada', createdAt: Date.now() - 3600000 * 12
+    },
+    {
+      id: 'b3', ref: 'AUR-4409', barberId: 'sofia', serviceIds: ['canas'],
+      date: '2026-10-14', time: '16:00', clientName: 'Fernando Castro',
+      subtotal: 22, discount: 4.4, fee: 0, total: 17.6, payment: 'card',
+      status: 'confirmada', createdAt: Date.now() - 3600000 * 6
+    },
+    {
+      id: 'b0', ref: 'AUR-7710', barberId: 'daniel', serviceIds: ['afeitado'],
+      date: '2026-10-12', time: '16:00', clientName: 'Rodrigo Benítez',
+      subtotal: 18, discount: 0, fee: 0, total: 18, payment: 'card',
+      status: 'completada', rating: 5, createdAt: Date.now() - 3600000 * 48
+    }
+  ];
+
+  // Helper to load client state with immediate fallback seed bookings
   function getClientState() {
     try {
       const s = JSON.parse(localStorage.getItem(STORAGE_KEY));
-      if (s) return s;
+      if (s && Array.isArray(s.bookings) && s.bookings.length > 0) return s;
+      if (s) {
+        s.bookings = DEFAULT_SEED_BOOKINGS;
+        saveClientState(s);
+        return s;
+      }
     } catch (e) {}
-    return null;
+    const initial = {
+      user: { name: 'Mateo Silva', email: 'mateo.silva@email.com', phone: '+1 (555) 234-5678' },
+      bookings: DEFAULT_SEED_BOOKINGS
+    };
+    try { saveClientState(initial); } catch (e) {}
+    return initial;
   }
 
   function saveClientState(st) {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(st));
   }
 
+  function getBarbers() {
+    if (window.AURA_DATA && Array.isArray(window.AURA_DATA.BARBERS) && window.AURA_DATA.BARBERS.length) {
+      return window.AURA_DATA.BARBERS;
+    }
+    if (window.AURA_ADMIN_DATA && Array.isArray(window.AURA_ADMIN_DATA.DEFAULT_BARBERS) && window.AURA_ADMIN_DATA.DEFAULT_BARBERS.length) {
+      return window.AURA_ADMIN_DATA.DEFAULT_BARBERS;
+    }
+    return FALLBACK_BARBERS;
+  }
+
+  function getBarber(id) {
+    const list = getBarbers();
+    return list.find(b => b.id === id) || list[0] || FALLBACK_BARBERS[0];
+  }
+
   // Allow customized services
   function getServices() {
     try {
       const custom = JSON.parse(localStorage.getItem(SERVICES_OVERRIDE_KEY));
-      if (custom && Array.isArray(custom)) return custom;
+      if (custom && Array.isArray(custom) && custom.length) return custom;
     } catch (e) {}
-    return window.AURA_DATA.SERVICES;
+    if (window.AURA_DATA && Array.isArray(window.AURA_DATA.SERVICES) && window.AURA_DATA.SERVICES.length) {
+      return window.AURA_DATA.SERVICES;
+    }
+    if (window.AURA_ADMIN_DATA && Array.isArray(window.AURA_ADMIN_DATA.DEFAULT_SERVICES) && window.AURA_ADMIN_DATA.DEFAULT_SERVICES.length) {
+      return window.AURA_ADMIN_DATA.DEFAULT_SERVICES;
+    }
+    return FALLBACK_SERVICES;
   }
 
   function saveServices(srvList) {
     localStorage.setItem(SERVICES_OVERRIDE_KEY, JSON.stringify(srvList));
+  }
+
+  function getLocation() {
+    if (window.AURA_DATA && window.AURA_DATA.LOCATION) return window.AURA_DATA.LOCATION;
+    return {
+      name: 'Aura Barbería — Serrano',
+      address: 'Calle Serrano 42, Salamanca, 28001 Madrid',
+      phone: '+34 912 345 678',
+      email: 'contacto@aurabarberia.es'
+    };
+  }
+
+  function getServiceName(serviceIds) {
+    if (!serviceIds || !serviceIds.length) return 'Corte Clásico Fade';
+    const srvs = getServices();
+    const names = serviceIds.map(id => {
+      const found = srvs.find(s => s.id === id);
+      return found ? found.name : id;
+    });
+    return names.join(' + ') || 'Corte Clásico Fade';
+  }
+
+  function getAdminData() {
+    if (window.AURA_ADMIN_DATA) return window.AURA_ADMIN_DATA;
+    return {
+      DEFAULT_BARBERS: FALLBACK_BARBERS,
+      DEFAULT_SERVICES: FALLBACK_SERVICES,
+      CLIENTS_CRM: [
+        { id: 'c1', name: 'Mateo Silva', email: 'mateo.silva@email.com', phone: '+1 (555) 234-5678', level: 'Diamante', visits: 12, spent: 285.00, lastVisit: '2026-10-08', favoriteBarber: 'Carlos Ruiz', notes: 'Prefiere toalla extra caliente y degradado afeitado cero.' },
+        { id: 'c2', name: 'Alejandro Morales', email: 'amorales@corp.com', phone: '+34 612 884 921', level: 'Oro', visits: 8, spent: 194.00, lastVisit: '2026-10-04', favoriteBarber: 'Daniel Vargas', notes: 'Perfilado de barba simétrica y cafe cortado sin azúcar.' },
+        { id: 'c3', name: 'Rodrigo Benítez', email: 'r.benitez@tech.io', phone: '+34 689 123 456', level: 'Platino', visits: 15, spent: 410.00, lastVisit: '2026-10-10', favoriteBarber: 'Carlos Ruiz', notes: 'Siempre reserva Combo Signature. Puntual.' },
+        { id: 'c4', name: 'Fernando Castro', email: 'fcastro@studio.design', phone: '+34 654 321 987', level: 'Plata', visits: 5, spent: 110.00, lastVisit: '2026-09-28', favoriteBarber: 'Sofía Morales', notes: 'Texturizado a tijera, no máquina en la coronilla.' }
+      ],
+      MONTHLY_REVENUE: [
+        { month: 'Mayo', revenue: 6420, appointments: 285 },
+        { month: 'Junio', revenue: 7150, appointments: 310 },
+        { month: 'Julio', revenue: 8340, appointments: 365 },
+        { month: 'Agosto', revenue: 7890, appointments: 340 },
+        { month: 'Septiembre', revenue: 9120, appointments: 402 },
+        { month: 'Octubre (Act.)', revenue: 10450, appointments: 458 }
+      ],
+      HOURLY_DEMAND: [
+        { hour: '09:00', load: 45 },
+        { hour: '10:00', load: 85 },
+        { hour: '11:00', load: 95 },
+        { hour: '12:00', load: 70 },
+        { hour: '15:00', load: 80 },
+        { hour: '16:00', load: 100 },
+        { hour: '17:00', load: 95 },
+        { hour: '18:00', load: 90 },
+        { hour: '19:00', load: 60 }
+      ],
+      CHAIRS: [
+        { id: 'chair-1', name: 'Silla 01 (Master)', barberId: 'carlos', status: 'en_servicio', clientName: 'Gabriel Mendoza', service: 'Corte Clásico Fade', endsAt: '11:15' },
+        { id: 'chair-2', name: 'Silla 02 (Clásica)', barberId: 'daniel', status: 'en_servicio', clientName: 'Alejandro Morales', service: 'Barba & Toalla Caliente', endsAt: '11:00' },
+        { id: 'chair-3', name: 'Silla 03 (Estudio)', barberId: 'sofia', status: 'proximo', clientName: 'Fernando Castro', service: 'Textura & Color', endsAt: '11:30' },
+        { id: 'chair-4', name: 'Silla 04 (Ritual)', barberId: 'javier', status: 'disponible', clientName: null, service: null, endsAt: null }
+      ],
+      COMMISSION_RATE: 0.50
+    };
   }
 
   const Admin = {
@@ -53,7 +211,18 @@
         }
       });
 
+      document.querySelectorAll('.mobile-nav-btn').forEach(btn => {
+        if (btn.dataset.tab === tabId) {
+          btn.classList.add('bg-[#1F5C46]', 'text-white');
+          btn.classList.remove('bg-black/5', 'text-[#404944]');
+        } else {
+          btn.classList.remove('bg-[#1F5C46]', 'text-white');
+          btn.classList.add('bg-black/5', 'text-[#404944]');
+        }
+      });
+
       const container = document.getElementById('main-content');
+      if (!container) return;
       switch (tabId) {
         case 'overview':
           container.innerHTML = Admin.renderOverview();
@@ -84,7 +253,10 @@
           Admin.mountSettings();
           break;
       }
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      try {
+        container.scrollTop = 0;
+        if (typeof window.scrollTo === 'function') window.scrollTo({ top: 0, behavior: 'smooth' });
+      } catch (e) {}
     },
 
     /* ========================================================
@@ -99,7 +271,7 @@
       const totalMonthlyRev = 10450 + appRevenue;
       const totalAppointments = 458 + confirmed.length;
       const avgTicket = (totalMonthlyRev / totalAppointments).toFixed(2);
-      const chairs = window.AURA_ADMIN_DATA.CHAIRS;
+      const chairs = getAdminData().CHAIRS;
       const occupiedChairs = chairs.filter(c => c.status === 'en_servicio').length;
       const occupancyRate = Math.round((occupiedChairs / chairs.length) * 100);
 
@@ -184,7 +356,7 @@
         </div>
         <div class="space-y-3">
           ${chairs.map(c => {
-            const barber = window.AURA_DATA.BARBERS.find(b => b.id === c.barberId);
+            const barber = getBarber(c.barberId);
             const isOcc = c.status === 'en_servicio';
             const isNext = c.status === 'proximo';
             return `
@@ -238,12 +410,13 @@
         </thead>
         <tbody class="divide-y divide-black/[0.04]">
           ${bookings.slice(0, 6).map(b => {
-            const barber = window.AURA_DATA.BARBERS.find(x => x.id === b.barberId) || window.AURA_DATA.BARBERS[0];
-            const sTitle = window.App ? window.App.booking.title(b.serviceIds) : 'Corte Clásico';
+            const barber = getBarber(b.barberId);
+            const sTitle = getServiceName(b.serviceIds);
+            const cName = b.clientName || (clientState && clientState.user && clientState.user.name) || 'Mateo Silva';
             return `
             <tr class="hover:bg-[#F9F9F6]/80 transition-colors">
               <td class="py-3.5 font-bold text-[#1F5C46]">#${b.ref}</td>
-              <td class="py-3.5 font-semibold text-[#1a1c1b]">${(clientState && clientState.user && clientState.user.name) || 'Mateo Silva'}</td>
+              <td class="py-3.5 font-semibold text-[#1a1c1b]">${cName}</td>
               <td class="py-3.5 flex items-center gap-2">
                 <img src="${barber.avatar || barber.thumb}" class="w-6 h-6 rounded-full object-cover">
                 <span>${barber.name}</span>
@@ -279,8 +452,12 @@
       // Build Chart with Chart.js
       const ctx = document.getElementById('revenueChart');
       if (ctx && window.Chart) {
-        const revData = window.AURA_ADMIN_DATA.MONTHLY_REVENUE;
-        Admin.chartInstance = new Chart(ctx, {
+        try {
+          if (Admin.chartInstance) {
+            Admin.chartInstance.destroy();
+          }
+          const revData = getAdminData().MONTHLY_REVENUE;
+          Admin.chartInstance = new Chart(ctx, {
           type: 'line',
           data: {
             labels: revData.map(d => d.month),
@@ -313,6 +490,9 @@
             }
           }
         });
+        } catch (err) {
+          console.warn('Revenue chart init error:', err);
+        }
       }
     },
 
@@ -350,8 +530,9 @@
 
     <div class="space-y-3" id="appointments-container">
       ${bookings.map(b => {
-        const barber = window.AURA_DATA.BARBERS.find(x => x.id === b.barberId) || window.AURA_DATA.BARBERS[0];
-        const sTitle = window.App ? window.App.booking.title(b.serviceIds) : 'Corte Clásico';
+        const barber = getBarber(b.barberId);
+        const sTitle = getServiceName(b.serviceIds);
+        const cName = b.clientName || (clientState && clientState.user && clientState.user.name) || 'Mateo Silva';
         const isDone = b.status === 'completada';
         const isCancelled = b.status === 'cancelada';
 
@@ -364,7 +545,7 @@
             </div>
             <div>
               <div class="flex items-center gap-2">
-                <span class="font-bold text-sm text-[#1a1c1b]">#${b.ref} · ${(clientState && clientState.user && clientState.user.name) || 'Mateo Silva'}</span>
+                <span class="font-bold text-sm text-[#1a1c1b]">#${b.ref} · ${cName}</span>
                 <span class="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase ${b.status === 'confirmada' ? 'bg-emerald-100 text-emerald-800' : (isDone ? 'bg-blue-100 text-blue-800' : 'bg-red-100 text-red-800')}">
                   ${b.status}
                 </span>
@@ -403,10 +584,10 @@
        3. BARBEROS & RENDIMIENTO / COMISIONES
     ======================================================== */
     renderBarbers() {
-      const barbers = window.AURA_DATA.BARBERS;
+      const barbers = getBarbers();
       const clientState = getClientState();
       const bookings = (clientState && clientState.bookings) || [];
-      const rate = window.AURA_ADMIN_DATA.COMMISSION_RATE; // 50%
+      const rate = getAdminData().COMMISSION_RATE || 0.50; // 50%
 
       return `
 <div class="space-y-6">
@@ -547,7 +728,7 @@
        5. CRM DE CLIENTES Y AURA CLUB
     ======================================================== */
     renderClients() {
-      const clients = window.AURA_ADMIN_DATA.CLIENTS_CRM;
+      const clients = getAdminData().CLIENTS_CRM;
       return `
 <div class="space-y-6">
   <div class="bg-white p-5 rounded-2xl border border-black/[0.06] shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
@@ -702,7 +883,7 @@
        7. AJUSTES DE SEDE (SETTINGS)
     ======================================================== */
     renderSettings() {
-      const loc = window.AURA_DATA.LOCATION;
+      const loc = getLocation();
       return `
 <div class="space-y-6 max-w-3xl">
   <div class="bg-white p-6 rounded-2xl border border-black/[0.06] shadow-sm">
@@ -852,13 +1033,13 @@
 
       const filtered = filter === 'all' ? bookings : bookings.filter(b => b.status === filter);
       cont.innerHTML = filtered.map(b => {
-        const barber = window.AURA_DATA.BARBERS.find(x => x.id === b.barberId) || window.AURA_DATA.BARBERS[0];
-        const sTitle = window.App ? window.App.booking.title(b.serviceIds) : 'Corte Clásico';
+        const barber = getBarber(b.barberId);
+        const sTitle = getServiceName(b.serviceIds);
         return `
         <div class="p-4 rounded-xl border border-black/[0.06] bg-[#F9F9F6]/40 flex items-center justify-between">
           <div class="flex items-center gap-3">
             <span class="font-bold text-sm">#${b.ref} · ${b.date} · ${b.time}</span>
-            <span class="text-xs text-[#71717A]">(${barber.name})</span>
+            <span class="text-xs text-[#71717A]">(${barber.name} · ${sTitle})</span>
           </div>
           <span class="font-bold text-sm text-[#1F5C46]">$${b.total} USD</span>
         </div>`;
@@ -870,7 +1051,7 @@
     },
 
     setupListeners() {
-      document.querySelectorAll('.nav-link').forEach(link => {
+      document.querySelectorAll('.nav-link, .mobile-nav-btn').forEach(link => {
         link.addEventListener('click', (e) => {
           e.preventDefault();
           Admin.setTab(link.dataset.tab);
